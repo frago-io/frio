@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+#unset PATH
+source /etc/zshrc
+#export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin"
+export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin"
+export PATH=~/.local/bin:$PATH
+export PATH=~/.yarn/bin:$PATH
+export PATH=./node_modules/.bin:$PATH
+#alias sh="$(which dash)"
+export LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive
+
+#bindkey '^p' autosuggest-accept
+bindkey '^ ' autosuggest-accept
+
+#WARNING: change this at the user level
+export FRG_WS=~/frg/ws
+
+alias runme="nix-shell --pure"
+
+alias log-frago-srv='tail -f -n 500 $FRG_WS/docker/x86/logs/frago.log | ccze -A'
+alias log-frago-local='tail -f -n 500 $FRG_WS/docker/x86/logs/frago-local.log | ccze -A'
+alias duh='sudo du -h --max-depth=1 | sort -rh'
+alias kill-wayland="killall -HUP gnome-shell"
+alias tmr="tmux attach"
+alias tmk="tmux kill-server"
+alias de='nvim -c "cd ~/.config/nixpkgs/" ~/.config/nixpkgs/home.nix'
+alias hh='home-manager switch'
+
+alias metal="ssh horus@metal"
+alias micro="ssh horus@micro"
+alias rock="ssh rock@rock"
+alias pi="ssh pi@pi"
+#alias tmux='_zsh_tmux_plugin_run -u'
