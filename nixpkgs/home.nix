@@ -3,9 +3,9 @@ let
   common = {
     inherit config pkgs;
   };
-  neovim = import ./neovim common;
-  zsh = import ./zsh common;
-  tmux = import ./tmux common;
+  neovim = import ./frio/neovim common;
+  zsh = import ./frio/zsh common;
+  tmux = import ./frio/tmux common;
 
   python-packages = pyPacks: with pyPacks; [
     #pandas

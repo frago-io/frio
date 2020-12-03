@@ -172,7 +172,7 @@ with rec {
         ; config = ''
             nnoremap ,m :NERDTreeToggle<cr>
             nnoremap ,n :NERDTreeFind<cr>
-            let g:NERDTreeWinSize=33
+            let g:NERDTreeWinSize=25
           ''
         ;
         }
