@@ -3,7 +3,8 @@
 #unset PATH
 #source /etc/zshrc
 #export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin"
-export PATH=~/.local/bin:$PATH
+#export PATH=~/.local/bin:$PATH
+export PATH=$PATH:~/.local/bin
 export PATH=~/.yarn/bin:$PATH
 export PATH=./node_modules/.bin:$PATH
 #alias sh="$(which dash)"
