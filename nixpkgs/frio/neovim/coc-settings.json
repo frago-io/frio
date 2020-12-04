@@ -1,0 +1,19 @@
+{
+    "diagnostic.virtualText": false,
+    "diagnostic.enableMessage":"always",
+    "diagnostic.enableSign": true,
+    "diagnostic.enableHighlightLineNumber": false,
+    "diagnostic.errorSign":  "◉",
+    "diagnostic.warningSign":  "◉",
+    "diagnostic.enable": true,
+    "diagnostic.displayByAle": true,
+
+    "languageserver": {
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--logfile", "/home/apophis/hlsp.txt","-d","--lsp"],
+            "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+            "filetypes": ["haskell", "lhaskell"]
+        }
+    }
+}

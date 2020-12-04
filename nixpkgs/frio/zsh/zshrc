@@ -33,14 +33,14 @@ alias rock="ssh rock@rock"
 alias pi="ssh pi@pi"
 #alias tmux='_zsh_tmux_plugin_run -u'
 
-COMMIT_ALL=$(cat <<-END
+
+commitAll() {
     if [ $# -eq 0 ]
         then
             echo "No arguments supplied"
         else
             git add -A && git commit -am"$1" && git push
     fi
-END
-)
+}
 
-alias commit-all=$COMMIT_ALL
+alias commit-all=commitAll

@@ -32,15 +32,15 @@ augroup Ale
     call SetAleHighlight()
 
     "mantocarie mare mare!!!!, din cauza ca nu stiu cine draq ii ia culoarea lu ale
-    au Bufenter *.js call SetAleHighlight()
-    au Bufenter *.hs call SetAleHighlight()
-    au Bufenter *.lua call SetAleHighlight()
-    au Bufenter *.json call SetAleHighlight()
-    au Bufenter *.xml call SetAleHighlight()
-    au Bufenter *.html call SetAleHighlight()
-    au Bufenter *.c call SetAleHighlight()
-    au Bufenter *.cpp call SetAleHighlight()
-    au Bufenter *.java call SetAleHighlight()
+    au FileType javascript call SetAleHighlight()
+    au FileType sh call SetAleHighlight()
+    au FileType c call SetAleHighlight()
+    au FileType json call SetAleHighlight()
+    au FileType html call SetAleHighlight()
+    au FileType lua call SetAleHighlight()
+    au FileType xml call SetAleHighlight()
+    au FileType haskell call SetAleHighlight()
+    au FileType cpp call SetAleHighlight()
 
     "endif
     let g:ale_statusline_format = ['X %d', '? %d', '']
