@@ -41,6 +41,7 @@ augroup Ale
     au FileType xml call SetAleHighlight()
     au FileType haskell call SetAleHighlight()
     au FileType cpp call SetAleHighlight()
+    au FileType nix call SetAleHighlight()
 
     "endif
     let g:ale_statusline_format = ['X %d', '? %d', '']

@@ -1,1 +1,0 @@
-/home/apophis/.config/nixpkgs/home.frio.nix

@@ -7,6 +7,7 @@ let
   zsh = import ./frio/zsh common;
   tmux = import ./frio/tmux common;
   userInfo = import ./frio/_user.info.nix;
+  hlsp= import ./frio/haskell/lsp/default.nix;
 
   python-packages = pyPacks: with pyPacks; [
     #pandas
@@ -17,6 +18,7 @@ let
 
 in  {
   home.packages = [
+    hlsp
     #python-with-packages
 
     # UNIX UTILS  ***************************************************
@@ -65,6 +67,7 @@ in  {
     #pkgs.haskell.compiler.ghc865
     #pkgs.stack
     #pkgs.haskell.packages.ghc865.haskell-language-server
+    #pkgs.haskell.packages.ghc8101.haskell-language-server
     #pkgs.haskellPackages.haskell-language-server
     pkgs.haskellPackages.hasktags
     pkgs.haskellPackages.stack
