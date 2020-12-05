@@ -38,9 +38,9 @@ ${RESET}"
               echoError "loading nix-profile failed"
               exit 1
           fi
-          if ! command -v @NIX_CHN &> /dev/null; then
+          if ! command -v $NIX_CHN &> /dev/null; then
               echo ""
-              echoError "We can't find nix-channel command. Please see details above to grasp what might have got wrong"
+              echoError "ASDADASDASD can't find nix-channel command. Please see details above to grasp what might have got wrong"
               echo ""
               exit 1
           fi
