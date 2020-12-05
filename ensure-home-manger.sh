@@ -28,6 +28,15 @@ ${RESET}"
 
     if [ -z "$ans" ] || [[ $ans == 1 ]] ; then
           curl -L https://nixos.org/nix/install | sh
+          if [[ $? -ne 0 ]]; then
+              echoError "nix-os installation failed"
+              exit 1
+          fi
+          . $HOME/.nix-profile/etc/profile.d/nix.sh
+          if [[ $? -ne 0 ]]; then
+              echoError "loading nix-profile failed"
+              exit 1
+          fi
           if ! command -v @NIX_CHN &> /dev/null; then
               echo ""
               echoError "We can't find nix-channel command. Please see details above to grasp what might have got wrong"
