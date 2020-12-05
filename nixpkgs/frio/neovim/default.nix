@@ -175,8 +175,8 @@ with rec {
             let g:NERDTreeWinSize=25
 
             " open nerdtree and focus on right
-            autocmd VimEnter * NERDTree
-            autocmd VimEnter * wincmd p
+            #autocmd VimEnter * NERDTree
+            #autocmd VimEnter * wincmd p
           ''
         ;
         }
