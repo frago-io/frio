@@ -32,12 +32,8 @@ ${RESET}"
               echoError "nix-os installation failed"
               exit 1
           fi
-          echoR "executing '. $HOME/.nix-profile/etc/profile.d/nix.sh"
-          . $HOME/.nix-profile/etc/profile.d/nix.sh
-          if [[ $? -ne 0 ]]; then
-              echoError "loading nix-profile failed"
-              exit 1
-          fi
+          echoB "executing '. $HOME/.nix-profile/etc/profile.d/nix.sh"
+          $(. $HOME/.nix-profile/etc/profile.d/nix.sh)
           if ! command -v $NIX_CHN &> /dev/null; then
               echo ""
               echoError "ASDADASDASD can't find nix-channel command. Please see details above to grasp what might have got wrong"
