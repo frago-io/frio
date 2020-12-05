@@ -43,4 +43,19 @@ commitAll() {
     fi
 }
 
+frio() {
+    if [ $# -eq 0 ] ;then
+        echo "No arguments supplied"
+    elif [[ $1 == 'update' ]]; then
+        curl -H 'Cache-Control: no-cache' -L https://raw.githubusercontent.com/frago-io/frio/main/bootstrap.sh | bash
+    elif [[ $1 == 'uninstall' ]]; then
+        echo "uninstall option under construction"
+    else
+        echo "'$1' option unknown"
+        exit 1
+    fi
+}
+
 alias commit-all=commitAll
+alias frio=frio
+
