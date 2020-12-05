@@ -15,19 +15,24 @@ let
     # other python packages you want
   ]; 
   python-with-packages = pkgs.python3.withPackages python-packages;
+  isDarwin = builtins.currentSystem == "x86_64-darwin";
 
 in  {
-  home.packages = [
+  home.packages = (
+    if !isDarwin then [
+      pkgs.glibcLocales
+      pkgs.nmon
+    ] else []
+    ) ++ [
     hlsp
     #python-with-packages
 
     # UNIX UTILS  ***************************************************
-    #pkgs.bat
     pkgs.git
     pkgs.jq                                  # json command processor
     pkgs.perl
     pkgs.asciinema
-    pkgs.glibcLocales
+    #
 
     # core-*nix
     #pkgs.coreutils-full
@@ -55,7 +60,6 @@ in  {
 
     # MONITOR / ADMIN  **********************************************
     pkgs.htop
-    pkgs.nmon
 
     # FUN  **********************************************************
     pkgs.fortune

@@ -2,6 +2,9 @@
 #
 #unset PATH
 #source /etc/zshrc
+if [ -e /Users/horus/.nix-profile/etc/profile.d/nix.sh ]; 
+    then . /Users/horus/.nix-profile/etc/profile.d/nix.sh; 
+fi # added by Nix installer
 #export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin"
 #export PATH=~/.local/bin:$PATH
 export PATH=$PATH:~/.local/bin
@@ -31,6 +34,8 @@ alias metal="ssh horus@metal"
 alias micro="ssh horus@micro"
 alias rock="ssh rock@rock"
 alias pi="ssh pi@pi"
+alias popos="ssh horus@popos"
+alias apopos="ssh apophis@popos"
 #alias tmux='_zsh_tmux_plugin_run -u'
 
 
@@ -43,7 +48,7 @@ commitAll() {
     fi
 }
 
-frio() {
+frioCmd() {
     if [ $# -eq 0 ] ;then
         echo "No arguments supplied"
     elif [[ $1 == 'update' ]]; then
@@ -57,5 +62,5 @@ frio() {
 }
 
 alias commit-all=commitAll
-alias frio=frio
+alias frio=frioCmd
 
