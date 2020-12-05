@@ -32,6 +32,7 @@ ${RESET}"
               echoError "nix-os installation failed"
               exit 1
           fi
+          echoR "executing '. $HOME/.nix-profile/etc/profile.d/nix.sh"
           . $HOME/.nix-profile/etc/profile.d/nix.sh
           if [[ $? -ne 0 ]]; then
               echoError "loading nix-profile failed"
