@@ -2,9 +2,10 @@
 #
 #unset PATH
 #source /etc/zshrc
-if [ -e /Users/horus/.nix-profile/etc/profile.d/nix.sh ]; 
-    then . /Users/horus/.nix-profile/etc/profile.d/nix.sh; 
+if [ -z "$NIX_PATH" ] && [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; 
+    then . $HOME/.nix-profile/etc/profile.d/nix.sh; 
 fi # added by Nix installer
+
 #export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin"
 #export PATH=~/.local/bin:$PATH
 export PATH=$PATH:~/.local/bin

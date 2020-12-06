@@ -14,7 +14,7 @@ if [[ $SHELL != $nix_zsh ]]; then
     zsh=zsh
     echoOK "frio installed.
     $ORANGE
-    type $BLUE$zsh$ORANGE when you want to enter in frio mode
+    type $BLUE$nix_zsh$ORANGE when you want to enter in frio mode
     or
     you cand make zsh your default shell by typing following command:
     $BLUE$cmd
