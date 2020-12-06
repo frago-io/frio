@@ -52,8 +52,8 @@ in  {
     #pkgs.glibc-2.32
 
     # JAVASCRIPT ****************************************************
-    pkgs.nodejs
-    pkgs.yarn
+    #pkgs.nodejs
+    #pkgs.yarn
 
     # LANG UTILS ****************************************************
     pkgs.ctags
