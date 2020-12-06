@@ -2,15 +2,8 @@
 #
 #unset PATH
 #source /etc/zshrc
-if [ -z "$NIX_PATH" ] && [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; 
-    then . $HOME/.nix-profile/etc/profile.d/nix.sh; 
-fi # added by Nix installer
 
-#export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin"
-#export PATH=~/.local/bin:$PATH
-export PATH=$PATH:~/.local/bin
-export PATH=~/.yarn/bin:$PATH
-export PATH=./node_modules/.bin:$PATH
+
 #alias sh="$(which dash)"
 export LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive
 
@@ -89,7 +82,20 @@ frioCmd() {
 alias commit-all=commitAll
 alias frio=frioCmd
 
+#NVM
+export NVM_DIR="$(echo "$HOME/.nvm")"
+#export PATH="$HOME/.cargo/bin:$PATH"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 extraRc=$HOME/.extra.zshrc
 if [[ -e "$extraRc" ]]; then source $extraRc; fi
+
+export PATH=$HOME/.yarn/bin:$PATH
+
+if [ -z "$NIX_PATH" ] && [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; 
+    then . $HOME/.nix-profile/etc/profile.d/nix.sh; 
+fi # added by Nix installer
+
+export PATH=$HOME/.nix-profile/bin:$PATH
+export PATH=./node_modules/bin:$PATH
 
