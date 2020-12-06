@@ -13,11 +13,18 @@ let
     #sha256 = "1082zhkja71klk1pcfn44zkrv6dg0rlni3abllgp6r7sbwddicna";
   #};
 
-  system = if builtins.currentSystem == "x86_64-darwin" then "macOS" else "Linux";
+  
+  isDarwin = builtins.currentSystem == "x86_64-darwin";
+  system = if isDarwin then "macOS" else "Linux";
+
+  sha256 = if isDarwin
+    then  "01yknxm17p0lm0ikkck9kdhlj9wbsdi0h7gzrxb8p8yqylsqja75"
+    else "0q9zqa2pkczxh4h6jbqw60dajj38zjjc3c0jawnaqkfcyd9xjgjs";
+
   srcz = pkgs.fetchurl {
     url = "https://github.com/haskell/haskell-language-server/releases/download/0.6.0/haskell-language-server-"
       + system + "-0.6.0.tar.gz";
-    sha256 = "01yknxm17p0lm0ikkck9kdhlj9wbsdi0h7gzrxb8p8yqylsqja75";
+    sha256 = sha256;
   };
   sys = builtins.currentSystem;
   #srcx=./ghc865 + "/${sys}/hlsp.tar.gz";
