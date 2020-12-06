@@ -97,5 +97,5 @@ if [ -z "$NIX_PATH" ] && [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ];
 fi # added by Nix installer
 
 export PATH=$HOME/.nix-profile/bin:$PATH
-export PATH=./node_modules/bin:$PATH
+export PATH=./node_modules/.bin:$PATH
 

@@ -50,6 +50,7 @@ ensureLink() {
         fi
         #echo "rm -rf $1"
         #echo "$file not exists on your filesystem."
+        echo "ln -s $2 $1 "
         ln -s $2 $1 
         echoOK "$1 linked to $2"
     fi
