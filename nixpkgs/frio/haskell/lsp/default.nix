@@ -13,21 +13,32 @@ let
     #sha256 = "1082zhkja71klk1pcfn44zkrv6dg0rlni3abllgp6r7sbwddicna";
   #};
 
+  system = if builtins.currentSystem == "x86_64-darwin" then "macOS" else "Linux";
+  srcz = pkgs.fetchurl {
+    url = "https://github.com/haskell/haskell-language-server/releases/download/0.6.0/haskell-language-server-"
+      + system + "-0.6.0.tar.gz";
+    sha256 = "01yknxm17p0lm0ikkck9kdhlj9wbsdi0h7gzrxb8p8yqylsqja75";
+  };
   sys = builtins.currentSystem;
-  srcx=./ghc865 + "/${sys}/hlsp.tar.gz";
+  #srcx=./ghc865 + "/${sys}/hlsp.tar.gz";
 
 in stdenv.mkDerivation rec {
     name = "haskel-lsp";
-    src=srcx;
-    #buildInputs = [ ];
+    #buildInputs = [ srcz ];
+    src=./src;
+
     buildPhase = ''
       set -e
+      echo "!!!!!!!!!!!!!!!!!!"
 
       echo "mkdir -p $out/bin"
       mkdir -p $out/bin
 
-      echo "tar xf ${srcx} -C $out"
-      tar xf ${srcx} -C $out
+      echo "tar xf ${srcz} -C $out/bin"
+      tar xf ${srcz} -C $out/bin
+
+      echo "chmod -R +x $out/bin"
+      chmod -R +x $out/bin
     '';
 
     installPhase = ''
