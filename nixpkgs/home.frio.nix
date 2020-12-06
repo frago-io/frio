@@ -20,8 +20,13 @@ let
 in  {
   home.packages = (
     if !isDarwin then [
-      pkgs.glibcLocales
       pkgs.nmon
+
+      #building
+      pkgs.glibcLocales
+      pkgs.gmp4
+      pkgs.binutils
+      pkgs.glibc
     ] else []
     ) ++ [
     hlsp
@@ -32,21 +37,18 @@ in  {
     pkgs.jq                                  # json command processor
     pkgs.perl
     pkgs.asciinema
-    #
 
     # core-*nix
-    #pkgs.coreutils-full
-    #pkgs.gnumake
-    #pkgs.xz
-    #pkgs.gnutar
-    #pkgs.gnused
-    #pkgs.gnugrep
-    #pkgs.less
-    #pkgs.gcc
-    #pkgs.gmp4
-    #pkgs.binutils
-    #pkgs.findutils
-    #pkgs.gawk
+    pkgs.coreutils-full
+    pkgs.gnumake
+    pkgs.xz
+    pkgs.gnutar
+    pkgs.gnused
+    pkgs.gnugrep
+    pkgs.less
+    pkgs.gcc
+    pkgs.findutils
+    pkgs.gawk
     #pkgs.dash
     #pkgs.glibc
     #pkgs.glibc-2.32
