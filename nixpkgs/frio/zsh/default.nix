@@ -6,6 +6,7 @@
       autocd = true;
       enableAutosuggestions = true;
       initExtra = ''
+          ${(builtins.readFile ./utils.sh)}
           ${(builtins.readFile ./zshrc)}
         '';
 

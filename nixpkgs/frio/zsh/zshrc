@@ -42,21 +42,45 @@ alias apopos="ssh apophis@popos"
 commitAll() {
     if [ $# -eq 0 ]
         then
-            echo "No arguments supplied"
+            echoError "No arguments supplied"
         else
             git add -A && git commit -am"$1" && git push
     fi
 }
 
+makeDefaultShell() {
+
+    local profile=$HOME/.nix-profile/bin
+    local nix_zsh=$profile/zsh
+    local cmd="chsh -s $nix_zsh"
+    local shells=$(cat /etc/shells)
+    local zsh=zsh
+
+    if [[ $SHELL != $nix_zsh ]]; 
+        then 
+            if [[ $shells != *$nix_zsh* ]]; then 
+                cmd="(echo \"$nix_zsh\" | sudo tee -a /etc/shells) && "$cmd
+            fi
+            eval $cmd
+            echoOK "shell updated, now please logout from shell"
+        else
+            echoB "$ORANGE""nothing to be done, already you have $BLUE\`$nix_zsh\`$ORANGE as your default shell"
+
+    fi
+
+}
+
 frioCmd() {
     if [ $# -eq 0 ] ;then
-        echo "No arguments supplied"
+        echoError "No arguments supplied"
     elif [[ $1 == 'update' ]]; then
         curl -H 'Cache-Control: no-cache' -L https://raw.githubusercontent.com/frago-io/frio/main/bootstrap.sh | bash
     elif [[ $1 == 'uninstall' ]]; then
-        echo "uninstall option under construction"
+        echoB "$ORANGE""uninstall option under construction"
+    elif [[ $1 == 'make-default' ]]; then
+        makeDefaultShell
     else
-        echo "'$1' option unknown"
+        echoError "'$1' option unknown"
         exit 1
     fi
 }

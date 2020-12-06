@@ -12,12 +12,4 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-if [[ $SHELL != $(which zsh) ]];
-    then echoOK "frio installed.
-
-    type \`zsh\` when you want to enter in frio mode
-    or
-    you cand make zsh your default shell by typing: \`chsh -s $(which zsh)\`"
-
-    else echoOK "frio installed"
-fi
+source ./change-shell.sh
