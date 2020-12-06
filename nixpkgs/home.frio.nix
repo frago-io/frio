@@ -24,9 +24,9 @@ in  {
 
       #building
       pkgs.glibcLocales
-      pkgs.gmp4
-      pkgs.binutils
-      pkgs.glibc
+      #pkgs.gmp4
+      #pkgs.binutils
+      #pkgs.glibc
     ] else []
     ) ++ [
     hlsp
@@ -39,16 +39,16 @@ in  {
     pkgs.asciinema
 
     # core-*nix
-    pkgs.coreutils-full
-    pkgs.gnumake
-    pkgs.xz
-    pkgs.gnutar
-    pkgs.gnused
-    pkgs.gnugrep
-    pkgs.less
-    pkgs.gcc
-    pkgs.findutils
-    pkgs.gawk
+    #pkgs.coreutils-full
+    #pkgs.gnumake
+    #pkgs.xz
+    #pkgs.gnutar
+    #pkgs.gnused
+    #pkgs.gnugrep
+    #pkgs.less
+    #pkgs.gcc
+    #pkgs.findutils
+    #pkgs.gawk
     #pkgs.dash
     #pkgs.glibc
     #pkgs.glibc-2.32
