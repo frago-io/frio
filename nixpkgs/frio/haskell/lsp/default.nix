@@ -36,7 +36,6 @@ in stdenv.mkDerivation rec {
 
     buildPhase = ''
       set -e
-      echo "!!!!!!!!!!!!!!!!!!"
 
       echo "mkdir -p $out/bin"
       mkdir -p $out/bin
@@ -44,12 +43,11 @@ in stdenv.mkDerivation rec {
       echo "tar xf ${srcz} -C $out/bin"
       tar xf ${srcz} -C $out/bin
 
-      echo "chmod -R +x $out/bin"
-      chmod -R +x $out/bin
     '';
 
     installPhase = ''
-      echo 'PULA=x'
+      echo "chmod -R +x $out/bin"
+      chmod -R +x $out/bin
     '';
   }
 
