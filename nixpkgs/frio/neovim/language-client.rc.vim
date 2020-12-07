@@ -2,9 +2,9 @@ augroup LanguageClient
     nnoremap <leader>] :call LanguageClient#textDocument_definition()<CR>
 
     let g:LanguageClient_rootMarkers = ['package.json']
-    let g:LanguageClient_serverCommands = {
-                \ 'javascript': ['flow', 'lsp'],
-                \ }
+    "let g:LanguageClient_serverCommands = {
+                "\ 'javascript': ['flow', 'lsp'],
+                "\ }
 
     let g:LanguageClient_diagnosticsEnable=0
     let g:LanguageClient_diagnosticsDisplay= {
