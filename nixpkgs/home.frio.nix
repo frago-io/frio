@@ -37,6 +37,7 @@ in  {
     pkgs.jq                                  # json command processor
     pkgs.perl
     pkgs.asciinema
+    pkgs.tmate
 
     # core-*nix
     #pkgs.coreutils-full

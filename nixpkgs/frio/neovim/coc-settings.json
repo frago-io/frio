@@ -8,6 +8,8 @@
     "diagnostic.enable": true,
     "diagnostic.displayByAle": true,
 
+    "codeLens.enable": true,
+
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",

@@ -27,6 +27,8 @@ augroup Ale
     function! SetAleHighlight()
         highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#d7424d
         highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#FFAF00
+        "highlight CocCodeLens guifg=#5c6370
+        highlight CocCodeLens guifg=#343942
     endfunction
 
     call SetAleHighlight()

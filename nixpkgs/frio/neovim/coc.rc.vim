@@ -21,6 +21,8 @@ augroup coc
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> gcr :CocRestart<CR>
+    nmap <silent> gce <Plug>(coc-codelens-action)
 
     " Use K to show documentation in preview window.
     nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -79,5 +81,6 @@ augroup coc
     " NOTE: Please see `:h coc-status` for integrations with external plugins that
     " provide custom statusline: lightline.vim, vim-airline.
     set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
 augroup END
 
