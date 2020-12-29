@@ -26,8 +26,8 @@ with rec {
       src = pkgs.fetchFromGitHub { 
         owner = "yuki-ycino";
         repo="fzf-preview.vim";
-        rev="9719e67fdcd9dc8f938d4398a22ec5f4aca1d875";
-        sha256="19hprb20sxxj7zpf29aq0wp9v1q3c0hycj8bb2l0ijz5y8a3r1wp";
+        rev="c0bacad976b8398ccbd4a9315161d95a4a87aab7";
+        sha256="1brwf4zghyfxr110d5x2blr9212p0f6pvf1imjvwjyj555d36d3l";
       };
     };
     paredit-vim = pkgs.vimUtils.buildVimPlugin {
