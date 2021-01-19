@@ -1,10 +1,17 @@
 { config, pkgs, ... }:
 
- let 
+let 
+    tmuxRemoteConfFileName = "tmux.remove.conf";
+    tmuxRemoteConf = pkgs.writeShellScriptBin tmuxRemoteConfFileName ''
+          ${(builtins.readFile ./tmux.remote.conf)}
+        '';
     in {
       enable = true;
       extraConfig = ''
           ${(builtins.readFile ./tmux.conf)}
+          # Session is considered to be remote when we ssh into host
+          if-shell 'test -n "$SSH_CLIENT"' \
+              'source-file ${tmuxRemoteConf}/bin/${tmuxRemoteConfFileName}'
         '';
       plugins = 
          with pkgs; [

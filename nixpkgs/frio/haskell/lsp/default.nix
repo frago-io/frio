@@ -17,15 +17,23 @@ let
   isDarwin = builtins.currentSystem == "x86_64-darwin";
   system = if isDarwin then "macOS" else "Linux";
 
-  sha256 = if isDarwin
-    then  "1v947741qhg13sqvfwmdvrr1kzk6cbkyd7kri8s4zfsaqz7kgb47"
-    else "0qkzc88i3n2iyaj9xjdpx7iykz2aqffkc7s1ka2s24qnz78knkz7";
+  srcz_060 = pkgs.fetchurl {
+    url = "https://github.com/haskell/haskell-language-server/releases/download/0.6.0/haskell-language-server-"
+       + system + "-0.6.0.tar.gz";
+    sha256 = if isDarwin
+      then  "01yknxm17p0lm0ikkck9kdhlj9wbsdi0h7gzrxb8p8yqylsqja75"
+      else "0q9zqa2pkczxh4h6jbqw60dajj38zjjc3c0jawnaqkfcyd9xjgjs";
+    };
 
-  srcz = pkgs.fetchurl {
+  srcz_071 = pkgs.fetchurl {
     url = "https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-"
       + system + "-0.7.1.tar.gz";
-    sha256 = sha256;
-  };
+    sha256 = if isDarwin
+      then  "1v947741qhg13sqvfwmdvrr1kzk6cbkyd7kri8s4zfsaqz7kgb47"
+      else "0qkzc88i3n2iyaj9xjdpx7iykz2aqffkc7s1ka2s24qnz78knkz7";
+    };
+
+  srcz = srcz_071;
   sys = builtins.currentSystem;
   #srcx=./ghc865 + "/${sys}/hlsp.tar.gz";
 

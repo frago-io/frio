@@ -21,4 +21,6 @@
 "colorscheme space-vim-dark
 "colorscheme predawn
 "colorscheme spacemacs-theme
+"
+"colorscheme gruvbox
 
