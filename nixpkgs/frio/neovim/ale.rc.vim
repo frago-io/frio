@@ -5,14 +5,14 @@ augroup Ale
     let g:ale_linters = {
                 \  'haskell': ['hlint'],
                 \  'cs': ['OmniSharp'],
-                \  'javascript': ['eslint','flow'],
-                \  'typescript': [ 'tslint', 'tsserver'],
                 \}
+                "\  'javascript': ['eslint','flow'],
+                "\  'typescript': [ 'tslint', 'tsserver'],
     let g:ale_fixers = {
-                \  'typescript': ['tslint'],
-                \  'javascript': ['eslint'],
                 \  'haskell': ['hlint','stylish-haskell'],
                 \}
+                "\  'javascript': ['eslint'],
+                "\  'typescript': ['tslint'],
 
     let g:ale_javascript_eslint_use_global = 1
     let g:ale_javascript_flow_use_global = 1
