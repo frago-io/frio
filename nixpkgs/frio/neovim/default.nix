@@ -147,6 +147,7 @@ with rec {
 
         coc-eslint
         coc-json
+        coc-tsserver
 
         # FILES SEARCH AND NAVIGATION ***********************************
         taglist-vim                              # ctags mother of f___er
@@ -250,6 +251,7 @@ with rec {
         ;
         }
 
+        yats-vim
         vim-jsx-pretty
         vim-javascript
         typescript-vim

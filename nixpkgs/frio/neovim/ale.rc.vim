@@ -44,6 +44,8 @@ augroup Ale
     au FileType haskell call SetAleHighlight()
     au FileType cpp call SetAleHighlight()
     au FileType nix call SetAleHighlight()
+    au FileType typescript call SetAleHighlight()
+    au FileType typescriptreact call SetAleHighlight()
 
     "endif
     let g:ale_statusline_format = ['X %d', '? %d', '']
