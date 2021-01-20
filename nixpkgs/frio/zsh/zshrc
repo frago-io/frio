@@ -28,8 +28,8 @@ alias metal="ssh horus@metal"
 alias micro="ssh horus@micro"
 alias rock="ssh rock@rock"
 alias pi="ssh pi@pi"
-alias popos="ssh horus@popos"
 alias apopos="ssh apophis@popos"
+alias bcat='bat --paging=never'
 #alias tmux='_zsh_tmux_plugin_run -u'
 
 
