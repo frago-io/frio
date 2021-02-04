@@ -265,11 +265,11 @@ with rec {
         ;
         }
 
-        { plugin = LanguageClient-neovim
-        ; config = '' 
-          ${(builtins.readFile ./language-client.rc.vim)}
-        '';
-        }
+        #{ plugin = LanguageClient-neovim
+        #; config = '' 
+          #${(builtins.readFile ./language-client.rc.vim)}
+        #'';
+        #}
 
         { plugin = ale
         ; config = '' ${(builtins.readFile ./ale.rc.vim)} ''
