@@ -7,6 +7,7 @@
     "diagnostic.warningSign":  "◉",
     "diagnostic.enable": true,
     "diagnostic.displayByAle": true,
+    "eslint.autoFixOnSave": true,
 
     "codeLens.enable": true,
 

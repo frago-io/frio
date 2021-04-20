@@ -10,8 +10,8 @@ augroup Ale
                 "\  'typescript': [ 'tslint', 'tsserver'],
     let g:ale_fixers = {
                 \  'haskell': ['hlint','stylish-haskell'],
+                \  'javascript': ['eslint'],
                 \}
-                "\  'javascript': ['eslint'],
                 "\  'typescript': ['tslint'],
 
     let g:ale_javascript_eslint_use_global = 1
