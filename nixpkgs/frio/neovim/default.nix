@@ -96,6 +96,16 @@ with rec {
         sha256="18vxcimlj02cmp820csdc7gzfc5ssfma9fx1dqryl4cf51sfpcpp";
       };
     };
+    sophia-vim-syntax = pkgs.vimUtils.buildVimPlugin {
+      name = "sophia-vim-syntax";
+      pname = "sophia-vim-syntax";
+      src = pkgs.fetchFromGitHub { 
+        owner = "bogdan-manole";
+        repo= "sophia-vim-syntax";
+        rev="7776b02c0d14231e19b382d820ea344df8b49332";
+        sha256="18zpw08mgjd18cpvfnyiqnj0mb96rl6gcyjz7hr5glhwhs2g66gp";
+      };
+    };
     vim-flow = pkgs.vimUtils.buildVimPlugin {
       name = "vim-flow";
       pname = "vim-flow";
@@ -225,6 +235,8 @@ with rec {
           ''
         ;
         }
+        # AETERNITY *****************************************************
+        sophia-vim-syntax
         # HASKELL *******************************************************
         vim-syntax-haskell-cabal
         haskell-vim
