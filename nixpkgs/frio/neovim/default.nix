@@ -106,6 +106,16 @@ with rec {
         sha256="18zpw08mgjd18cpvfnyiqnj0mb96rl6gcyjz7hr5glhwhs2g66gp";
       };
     };
+    vim-solidity = pkgs.vimUtils.buildVimPlugin {
+      name = "vim-solidity";
+      pname = "vim-solidity";
+      src = pkgs.fetchFromGitHub { 
+        owner = "tomlion";
+        repo= "vim-solidity";
+        rev="569bbbedc3898236d5912fed0caf114936112ae4";
+        sha256="1qpfbbrm4gjgvbkimhpxyl4fsdqkyw4raf17nw0ibqillz2d3pxx";
+      };
+    };
     vim-flow = pkgs.vimUtils.buildVimPlugin {
       name = "vim-flow";
       pname = "vim-flow";
@@ -237,6 +247,10 @@ with rec {
         }
         # AETERNITY *****************************************************
         sophia-vim-syntax
+
+        # EHTER *****************************************************
+        vim-solidity
+
         # HASKELL *******************************************************
         vim-syntax-haskell-cabal
         haskell-vim
