@@ -82,6 +82,17 @@ augroup MovingLines
     inoremap kk <Esc>
 augroup END
 
+augroup CleanTrailSpaces
+
+    nnoremap ¬ :%s/\s\+$//e<CR>
+
+    function! SetTrailSpaceHighlight()
+        highlight ExtraWhitespace ctermbg=red guibg=firebrick4
+        syntax match ExtraWhitespace /\s\+$/
+    endfunction
+    au FileType * call SetTrailSpaceHighlight()
+augroup END
+
 augroup Restrictions
     nnoremap   <Up>     <NOP>
     nnoremap   <Down>   <NOP>
