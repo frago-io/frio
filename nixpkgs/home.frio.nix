@@ -20,10 +20,10 @@ let
 in  {
   home.packages = (
     if !isDarwin then [
-      pkgs.nmon
+      #pkgs.nmon
 
       #building
-      pkgs.glibcLocales
+      #pkgs.glibcLocales
       #pkgs.gmp4
       #pkgs.binutils
       #pkgs.glibc
@@ -77,7 +77,7 @@ in  {
     #pkgs.haskell.packages.ghc8101.haskell-language-server
     #pkgs.haskellPackages.haskell-language-server
     pkgs.haskellPackages.hasktags
-    pkgs.haskellPackages.stack
+    #pkgs.haskellPackages.stack
     pkgs.haskellPackages.hoogle
     pkgs.stylish-haskell
 

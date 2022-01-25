@@ -21,6 +21,7 @@ alias duh='sudo du -h --max-depth=1 | sort -rh'
 alias kill-wayland="killall -HUP gnome-shell"
 alias tmr="tmux attach"
 alias tmk="tmux kill-server"
+alias tmx="tmux -f $ZSH_TMUX_CONFIG"
 alias de='nvim -c "cd ~/.config/nixpkgs/" ~/.config/nixpkgs/home.nix'
 alias hh='home-manager switch'
 
