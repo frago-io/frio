@@ -38,6 +38,7 @@ in  {
     pkgs.perl
     pkgs.asciinema
     pkgs.tmate
+    pkgs.silver-searcher
 
     # core-*nix
     #pkgs.coreutils-full
