@@ -12,6 +12,7 @@ bindkey '^ ' autosuggest-accept
 
 #WARNING: change this at the user level
 export FRG_WS=~/frg/ws
+export GPG_TTY=$(tty)
 
 alias runme="nix-shell --pure"
 

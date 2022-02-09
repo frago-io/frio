@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 #SHA256 example: ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
+#SHA256 example: sha256-ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=
 with rec { 
     cocFile = pkgs.writeTextFile
       { name = "coc-settings";
@@ -26,8 +27,8 @@ with rec {
       src = pkgs.fetchFromGitHub { 
         owner = "yuki-ycino";
         repo="fzf-preview.vim";
-        rev="c0bacad976b8398ccbd4a9315161d95a4a87aab7";
-        sha256="1brwf4zghyfxr110d5x2blr9212p0f6pvf1imjvwjyj555d36d3l";
+        rev="6580c6eb1170a176030fcc0d2eac8895d4571698";
+        sha256="Q1sReH92wy+g3hD9bSytAf8UAB2ON8J8Xc1uAkZwU/4=";
       };
     };
     paredit-vim = pkgs.vimUtils.buildVimPlugin {
@@ -131,8 +132,8 @@ with rec {
       src = pkgs.fetchFromGitHub { 
         owner = "itchyny";
         repo="vim-haskell-indent";
-        rev="f4da5bc71ae7de9525c8c23fe44664f3e8ad79cd";
-        sha256="0x5infc2r0py28iqijx874sblbh6k9a777x6i2hy4gb6a5ixx0rq";
+        rev="192d01ecdacf53d041d05760a1ed45a65be025d8";
+        sha256="sha256-eW0wwhR8XookrECdnYpT+gCNkkmpF7WsTbobcFBtqMU=";
       };
     };
     #NOTE: This is not th original repo, switch back to `monkoose` after
@@ -144,8 +145,8 @@ with rec {
         #owner = "monkoose";
         owner = "gvolpe";
         repo="fzf-hoogle.vim";
-        rev="f29885c69a76969603ebd044952f7ef5c69361fb";
-        sha256="0a9ml4mw8cgpig50bwfqywglzakhnrnlkl3n1acs1f5yjxvnl0n4";
+        rev="0c1620d9e0216c93f894d908e4eb8c513aaa79fc";
+        sha256="sha256-2siW5+cZhXusba9MyRx7YQlxQHc9Fy00FXtHUx7aQ5o=";
         #rev="5526cf047ef1b9fe89f3aa617ba4020e180d8355";
         #sha256="0avfqnsdqv0lbxg8nsygq87951c3kr6ld9flnkys04nn1gkx8sbw";
       };

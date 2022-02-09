@@ -34,6 +34,7 @@ in  {
 
     # UNIX UTILS  ***************************************************
     pkgs.git
+    pkgs.git-lfs
     pkgs.jq                                  # json command processor
     pkgs.perl
     pkgs.asciinema
