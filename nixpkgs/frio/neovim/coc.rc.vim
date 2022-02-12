@@ -13,8 +13,11 @@ augroup coc
     endif
 
     " Use `[g` and `]g` to navigate diagnostics
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    "nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    "nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    "WARNING: these overlapp over ALE, if ale enabled use previous
+    nmap <silent> <leader>ap <Plug>(coc-diagnostic-prev)
+    nmap <silent> <leader>an <Plug>(coc-diagnostic-next)
 
     " GoTo code navigation.
     nmap <silent> gd <Plug>(coc-definition)
@@ -81,6 +84,50 @@ augroup coc
     " NOTE: Please see `:h coc-status` for integrations with external plugins that
     " provide custom statusline: lightline.vim, vim-airline.
     set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+    "
+    "highlight CocCodeLens guifg=#5c6370
+    function! SetCocHighlight()
+        "highlight CocCodeLens guifg=#5c6370
+        "highlight CocErrorLine ctermfg=9 ctermbg=15 guifg=#d7424d
+        "
+        "highlight CocWarningHighlight ctermfg=11 ctermbg=15 guifg=#E5C07B
+        "highlight CocHintHighlight ctermfg=9 ctermbg=15 guifg=#d7424d
+        "highlight CocInfoHighlight ctermfg=9 ctermbg=15 guifg=#d7424d
+        "highlight CocWarningHighlight ctermfg=9 ctermbg=15 guifg=#d7424d
+        highlight CocErrorHighlight ctermfg=9 ctermbg=15 guifg=#d7424d
+        highlight CocUnusedHighlight  ctermfg=11 ctermbg=15 guifg=#FFAF00
+
+        highlight CocCodeLens guifg=#343942
+    endfunction
+
+    call SetCocHighlight()
+
+    "mantocarie mare mare!!!!, din cauza ca nu stiu cine draq ii ia culoarea lu ale
+    au FileType javascript call SetCocHighlight()
+    au FileType sh call SetCocHighlight()
+    au FileType c call SetCocHighlight()
+    au FileType json call SetCocHighlight()
+    au FileType html call SetCocHighlight()
+    au FileType lua call SetCocHighlight()
+    au FileType xml call SetCocHighlight()
+    au FileType haskell call SetCocHighlight()
+    au FileType cpp call SetCocHighlight()
+    au FileType nix call SetCocHighlight()
+    au FileType typescript call SetCocHighlight()
+    au FileType typescriptreact call SetCocHighlight()
+
+    function! SynStack()
+        if !exists("*synstack")
+            return
+        endif
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    endfunc
+    function! Syn()
+        for id in synstack(line("."), col("."))
+            echo synIDattr(id, "name")
+        endfor
+    endfunction
+    command! -nargs=0 Syn call Syn()
 
 augroup END
 

@@ -2,18 +2,18 @@
 
 #SHA256 example: ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
 #SHA256 example: sha256-ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=
-with rec { 
+with rec {
     cocFile = pkgs.writeTextFile
       { name = "coc-settings";
         text = "{sdada}";
         destination = "/c.json";
       };
   };
-  let 
+  let
     dockerfile-vim = pkgs.vimUtils.buildVimPlugin {
       name = "dockerfile-vim";
-      
-      src = pkgs.fetchFromGitHub { 
+
+      src = pkgs.fetchFromGitHub {
         owner = "bogdan-manole";
         repo="Dockerfile.vim";
         rev="31710bacdc30f6fb9df51f9d4e0c03bea34cc520";
@@ -23,8 +23,8 @@ with rec {
     fzf-preview = pkgs.vimUtils.buildVimPlugin {
       name = "fzf-preview.vim";
       pname = "fzf-preview.vim";
-      
-      src = pkgs.fetchFromGitHub { 
+
+      src = pkgs.fetchFromGitHub {
         owner = "yuki-ycino";
         repo="fzf-preview.vim";
         rev="6580c6eb1170a176030fcc0d2eac8895d4571698";
@@ -33,8 +33,8 @@ with rec {
     };
     paredit-vim = pkgs.vimUtils.buildVimPlugin {
       name = "paredit";
-      
-      src = pkgs.fetchFromGitHub { 
+
+      src = pkgs.fetchFromGitHub {
         owner = "vim-scripts";
         repo="paredit.vim";
         rev="791c3a0cc3155f424fba9409a9520eec241c189c";
@@ -43,8 +43,8 @@ with rec {
     };
     vim-niji = pkgs.vimUtils.buildVimPlugin {
       name = "vim-niji";
-      
-      src = pkgs.fetchFromGitHub { 
+
+      src = pkgs.fetchFromGitHub {
         owner = "amdt";
         repo="vim-niji";
         rev="e8fea68c567ad9e5bb2015e02f93873666bcf8c7";
@@ -53,7 +53,7 @@ with rec {
     };
     vim-rest-console = pkgs.vimUtils.buildVimPlugin {
       name = "vim-rest-console";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "diepm";
         repo="vim-rest-console";
         rev="7b407f47185468d1b57a8bd71cdd66c9a99359b2";
@@ -62,7 +62,7 @@ with rec {
     };
     vim-material-monokai = pkgs.vimUtils.buildVimPlugin {
       name = "vim-material-monokai";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "skielbasa";
         repo="vim-material-monokai";
         rev="989b0e2fd9858b1da758b76fd0aa1a67ce172690";
@@ -71,7 +71,7 @@ with rec {
     };
     cake16 = pkgs.vimUtils.buildVimPlugin {
       name = "cake16";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "zefei";
         repo="cake16";
         rev="7367a7caa750e6379c0e8a56229347b9a0a24048";
@@ -81,7 +81,7 @@ with rec {
     vim-colorscheme-switcher = pkgs.vimUtils.buildVimPlugin {
       name = "vim-colorscheme-switcher";
       pname = "vim-colorscheme-switcher";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "xolox";
         repo="vim-colorscheme-switcher";
         rev="4d9807a5a8948c18b5f3f278685269565c8e2508";
@@ -90,7 +90,7 @@ with rec {
     };
     vim-syntax-haskell-cabal = pkgs.vimUtils.buildVimPlugin {
       name = "vim-syntax-haskell-cabal";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "Twinside";
         repo="vim-syntax-haskell-cabal";
         rev="196325b85a01cb24c5ae4428bd6beabe44959ae8";
@@ -100,7 +100,7 @@ with rec {
     sophia-vim-syntax = pkgs.vimUtils.buildVimPlugin {
       name = "sophia-vim-syntax";
       pname = "sophia-vim-syntax";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "bogdan-manole";
         repo= "sophia-vim-syntax";
         rev="7776b02c0d14231e19b382d820ea344df8b49332";
@@ -110,7 +110,7 @@ with rec {
     vim-solidity = pkgs.vimUtils.buildVimPlugin {
       name = "vim-solidity";
       pname = "vim-solidity";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "tomlion";
         repo= "vim-solidity";
         rev="569bbbedc3898236d5912fed0caf114936112ae4";
@@ -120,7 +120,7 @@ with rec {
     vim-flow = pkgs.vimUtils.buildVimPlugin {
       name = "vim-flow";
       pname = "vim-flow";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "bogdan-manole";
         repo="vim-flow";
         rev="2a35a3511bc3d74e7e41014362f432a5f02a70e2";
@@ -129,7 +129,7 @@ with rec {
     };
     vim-haskell-indent = pkgs.vimUtils.buildVimPlugin {
       name = "vim-haskell-indent";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         owner = "itchyny";
         repo="vim-haskell-indent";
         rev="192d01ecdacf53d041d05760a1ed45a65be025d8";
@@ -141,7 +141,7 @@ with rec {
     fzf-hoogle-vim = pkgs.vimUtils.buildVimPlugin {
       name = "fzf-hoogle-vim";
       pname = "fzf-hoogle-vim";
-      src = pkgs.fetchFromGitHub { 
+      src = pkgs.fetchFromGitHub {
         #owner = "monkoose";
         owner = "gvolpe";
         repo="fzf-hoogle.vim";
@@ -159,6 +159,39 @@ with rec {
       ## PLUGINS ########################################################
 
       plugins = with pkgs.vimPlugins; [
+
+        # COLORS ********************************************************
+
+        { plugin = vim-colorschemes
+        ; config = ''
+            "WARNING: don't forget to comment one-dark if you use this
+            ${(builtins.readFile ./colorschemes.rc.vim)}
+          ''
+        ;
+        }
+
+        { plugin = onedark-vim
+        ; config = ''
+            "let g:onedark_termcolors=256
+            let g:onedark_terminal_italics=1
+            "au VimEnter * colorscheme onedark
+            colorscheme onedark
+          ''
+        ;
+        }
+
+        vim-material-monokai
+        cake16
+        vim-misc
+
+        { plugin = vim-colorscheme-switcher
+        ; config = ''
+            " shift + alt + >
+            noremap ˘ :NextColorScheme<cr>
+            noremap ¯ :PrevColorScheme<cr>
+          ''
+        ;
+        }
 
         # COC ***********************************************************
         { plugin = coc-nvim
@@ -218,7 +251,7 @@ with rec {
         ;
         }
         vim-airline-themes
-        
+
         # SYNTAX ********************************************************
         BetterLua-vim
         jdaddy-vim
@@ -240,7 +273,7 @@ with rec {
         vim-surround
 
         { plugin = vim-fireplace
-        ; config = '' 
+        ; config = ''
             au Bufenter *.clj nnoremap E :Eval<CR>
             au Bufenter *.cljc nnoremap E :Eval<CR>
           ''
@@ -257,12 +290,12 @@ with rec {
         haskell-vim
         vim-haskell-indent
         #{ plugin = vim-hoogle            # this conflicts with fzf-hoogle
-        #; config = '' 
+        #; config = ''
            #au Bufenter *.hs nnoremap ≥ :HoogleInfo<CR>
         #''
         #;
         #}
- 
+
         { plugin = fzf-hoogle-vim                 #this one has a bug about
                                             # a file not found: cashe.json
                                   # NOTE: go to fzf-hoogle-vim definition
@@ -271,7 +304,7 @@ with rec {
         ; config = '' ${(builtins.readFile ./fzf-hoogle.rc.vim)} ''
         ;
         }
- 
+
         # JAVASCRIPT ****************************************************
         { plugin = vim-flow
         ; config = '' ${(builtins.readFile ./vim-flow.rc.vim)} ''
@@ -293,52 +326,20 @@ with rec {
         }
 
         { plugin = LanguageClient-neovim
-        ; config = '' 
+        ; config = ''
           ${(builtins.readFile ./language-client.rc.vim)}
         '';
         }
 
-        { plugin = ale
-        ; config = '' ${(builtins.readFile ./ale.rc.vim)} ''
-        ;
-        }
+        #{ plugin = ale
+        #; config = '' ${(builtins.readFile ./ale.rc.vim)} ''
+        #;
+        #}
 
-
-        # COLORS ********************************************************
-        
-        { plugin = vim-colorschemes
-        ; config = ''
-            "WARNING: don't forget to comment one-dark if you use this
-            ${(builtins.readFile ./colorschemes.rc.vim)}
-          ''
-        ;
-        }
-
-        { plugin = onedark-vim
-        ; config = ''
-            "let g:onedark_termcolors=256
-            let g:onedark_terminal_italics=1
-            au VimEnter * colorscheme onedark
-          ''
-        ;
-        }
-
-        vim-material-monokai
-        cake16
-        vim-misc
-        
-        { plugin = vim-colorscheme-switcher
-        ; config = ''
-            " shift + alt + > 
-            noremap ˘ :NextColorScheme<cr>  
-            noremap ¯ :PrevColorScheme<cr>
-          ''
-        ;
-        }
 
         # TEXT MANIPULATION  ********************************************
         nerdcommenter
-        
+
         { plugin = tabular
         ; config = ''
             let g:haskell_tabular = 1
@@ -359,7 +360,7 @@ with rec {
           ''
         ;
         }
-        
+
         { plugin = camelcasemotion
         ; config = ''
             "call camelcasemotion#CreateMotionMappings('<leader>')
@@ -377,7 +378,8 @@ with rec {
 
         # OTHERS ********************************************************
         dockerfile-vim
-        vim-nix 
+        vim-nix
+        vim-prisma
 
         # GIT & DIFF ****************************************************
         vim-fugitive
@@ -395,7 +397,7 @@ with rec {
           ''
         ;
         }
-        
+
         nerdtree-git-plugin
         gundo-vim
         vim-rest-console

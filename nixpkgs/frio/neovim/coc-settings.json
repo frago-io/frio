@@ -11,7 +11,7 @@
 
     "tsserver.enable": true,
     "tsserver.enableJavascript": false,
-    "javascript.validate.enable": false,
+    "javascript.validate.enable": true,
 
     "eslint.validate": ["javascript", "javascriptreact","typescript", "javascript.jsx", "javascript.tsx"],
     "eslint.probe": ["javascript","javascriptreact","typescript","typescriptreact","html","vue","markdown"],

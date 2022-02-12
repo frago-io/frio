@@ -61,7 +61,7 @@ augroup Defaults
     set wildmenu
 
     set cmdheight=2
-    
+
     "set relativenumber
     set ruler
 
@@ -84,13 +84,14 @@ augroup END
 
 augroup CleanTrailSpaces
 
-    nnoremap ¬ :%s/\s\+$//e<CR>
+    nnoremap ¬ :%s/\s\+$//e<CR>:let @/ = ""<CR>
 
     function! SetTrailSpaceHighlight()
         highlight ExtraWhitespace ctermbg=red guibg=firebrick4
         syntax match ExtraWhitespace /\s\+$/
     endfunction
     au FileType * call SetTrailSpaceHighlight()
+    call SetTrailSpaceHighlight()
 augroup END
 
 augroup Restrictions
@@ -115,7 +116,7 @@ augroup GenericKeyMapings
     nnoremap <leader>/ /\c
     nnoremap <leader>:/ /\c
 
-    "saving 
+    "saving
     nnoremap S <NOP>
     nnoremap SS :w<cr>
 
@@ -124,7 +125,7 @@ augroup GenericKeyMapings
     "clear search
     nnoremap <A-/> :let @/ = ""<cr>
     nnoremap ÷ :let @/ = ""<cr>
-    
+
     " new line and enter in the normal mode
     nnoremap <C-J> mao<Esc>`a
     nnoremap <C-K> maO<Esc>`a
@@ -137,7 +138,7 @@ augroup GenericKeyMapings
     " Z-Shortcuts
     nnoremap ZA :suspend<CR>
     nnoremap ZQ :q<CR>
-    
+
     "save vim session
     nnoremap ZS :mks! ~/.local/.vim-sessions/rooster.vim<CR>
     "restore vim session
@@ -196,7 +197,7 @@ augroup CLang
 augroup END
 
 
-" fixing some filetypes that vim migh not know
+" fixing some filetypes that vim might not know
 augroup FilTypes
     au BufRead,BufNewFile *.fs set filetype=fs
     au BufRead,BufNewFile *.fsx set filetype=fs
