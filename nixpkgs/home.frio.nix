@@ -40,6 +40,8 @@ in  {
     pkgs.asciinema
     pkgs.tmate
     pkgs.silver-searcher
+    pkgs.gnupg
+    pkgs.pinentry-curses
 
     # core-*nix
     #pkgs.coreutils-full
