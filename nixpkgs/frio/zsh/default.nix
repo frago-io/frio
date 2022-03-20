@@ -9,6 +9,9 @@
           ${(builtins.readFile ./utils.sh)}
           ${(builtins.readFile ./zshrc)}
         '';
+      initExtraFirst = ''
+          ${(builtins.readFile ./first-zshrc.sh)}
+        '';
 
       oh-my-zsh = {
         enable = true;

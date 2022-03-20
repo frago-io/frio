@@ -203,7 +203,7 @@ augroup FilTypes
     au BufRead,BufNewFile *.fsx set filetype=fs
     au BufRead,BufNewFile *.cljc set filetype=clojure
     au BufRead,BufNewFile *.ts set filetype=typescript
-    au BufRead,BufNewFile *.tsx set filetype=typescript
+    au BufRead,BufNewFile *.tsx set filetype=typescriptreact
     au BufRead,BufNewFile *.js.flow set filetype=javascript
 augroup END
 

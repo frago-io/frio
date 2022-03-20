@@ -23,4 +23,5 @@
 "colorscheme spacemacs-theme
 "
 "colorscheme gruvbox
+colorscheme nord
 

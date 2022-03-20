@@ -3,8 +3,6 @@
 #unset PATH
 #source /etc/zshrc
 
-#source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-#source /nix/var/nix/profiles/default/etc/profile.d/nix.sh
 
 #alias sh="$(which dash)"
 export LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive
@@ -96,9 +94,10 @@ if [[ -e "$extraRc" ]]; then source $extraRc; fi
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
-#export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH
+if [ -z "$NIX_PATH" ] && [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; 
+    then . $HOME/.nix-profile/etc/profile.d/nix.sh; 
+fi # added by Nix installer
+
+export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH
 export PATH=./node_modules/.bin:$PATH
 
-#disable these for zsh tmux plugin
-export ZSH_TMUX_CONFIG=
-export ZSH_TMUX_FIXTERM=

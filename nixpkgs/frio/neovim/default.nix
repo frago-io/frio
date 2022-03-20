@@ -175,7 +175,7 @@ with rec {
             "let g:onedark_termcolors=256
             let g:onedark_terminal_italics=1
             "au VimEnter * colorscheme onedark
-            colorscheme onedark
+            "colorscheme onedark
           ''
         ;
         }
@@ -311,10 +311,12 @@ with rec {
         ;
         }
 
+        vim-vue
         yats-vim
         vim-jsx-pretty
         vim-javascript
         typescript-vim
+        vim-tsx
 
         # CODE VALIDATION AND COMPLETION ********************************
         neoformat                                 # we don't use this yet

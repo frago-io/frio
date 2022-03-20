@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let 
-    tmuxRemoteConfFileName = "tmux.remove.conf";
+    tmuxRemoteConfFileName = "tmux.remote.conf";
     tmuxRemoteConf = pkgs.writeShellScriptBin tmuxRemoteConfFileName ''
           ${(builtins.readFile ./tmux.remote.conf)}
         '';

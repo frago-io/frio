@@ -107,8 +107,8 @@ in  {
 
 
   programs.neovim = neovim;
-  programs.zsh = zsh;
   programs.tmux = tmux;
+  programs.zsh = zsh;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
