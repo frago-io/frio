@@ -97,7 +97,11 @@ augroup coc
         highlight CocErrorHighlight ctermfg=9 ctermbg=15 guifg=#d7424d
         highlight CocUnusedHighlight  ctermfg=11 ctermbg=15 guifg=#FFAF00
 
-        highlight CocCodeLens guifg=#343942
+        "highlight CocCodeLens guifg=#5c6370
+        "highlight CocCodeLens guifg=#434c5e
+        highlight CocCodeLens guifg=#39404f
+        "highlight CocCodeLens guifg=#3f4550
+        "highlight CocCodeLens guifg=#343942
     endfunction
 
     call SetCocHighlight()

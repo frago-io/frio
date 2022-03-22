@@ -14,8 +14,9 @@ let
   #};
 
   
-  isDarwin = builtins.currentSystem == "x86_64-darwin";
+  isDarwin = builtins.currentSystem == "x86_64-darwin" ||  builtins.currentSystem == "aarch64-darwin";
   system = if isDarwin then "macOS" else "Linux";
+  isM1 = builtins.currentSystem == "aarch64-darwin";
 
   srcz_060 = pkgs.fetchurl {
     url = "https://github.com/haskell/haskell-language-server/releases/download/0.6.0/haskell-language-server-"
@@ -32,8 +33,17 @@ let
       then  "1v947741qhg13sqvfwmdvrr1kzk6cbkyd7kri8s4zfsaqz7kgb47"
       else "0qkzc88i3n2iyaj9xjdpx7iykz2aqffkc7s1ka2s24qnz78knkz7";
     };
+  srcz_1610 = pkgs.fetchurl {
+    url = if isM1 
+      then "https://github.com/haskell/haskell-language-server/releases/download/1.6.1.0/haskell-language-server-macOS-aarch64-1.6.1.0.tar.xz"
+      else "https://github.com/haskell/haskell-language-server/releases/download/1.6.1.0/haskell-language-server-"
+        + system + "-1.6.1.0.tar.gz";
+        sha256 = if isM1 then "sha256-/sojNte5jSPO/xBDjSZHbHHObOReYXGVknVWok4UgL8="
+                 else if isDarwin then  "sha256-KHrfF6TVcEMWpd1EFxmm9q1lerasZgoXv8oMB8KDprg="
+                 else "sha256-A/EyFCFsOcCe2dBzMXy/e9yYp10MTuL9Um5EZFdZHSU=";
+    };
 
-  srcz = srcz_071;
+  srcz = srcz_1610;
   sys = builtins.currentSystem;
   #srcx=./ghc865 + "/${sys}/hlsp.tar.gz";
 
