@@ -10,10 +10,11 @@
     "eslint.autoFixOnSave": true,
 
     "tsserver.enable": true,
-    "tsserver.enableJavascript": false,
+    "tsserver.enableJavascript": true,
     "javascript.validate.enable": true,
 
     "typescript.referencesCodeLens.enable": false,
+    "javascript.referencesCodeLens.enable": false,
 
     "eslint.validate": ["javascript", "javascriptreact","typescript","typescriptreact", "javascript.jsx", "javascript.tsx"],
     "eslint.probe": ["javascript","javascriptreact","typescript","typescriptreact","html","vue","markdown"],
@@ -29,6 +30,10 @@
             "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
             "filetypes": ["haskell", "lhaskell"]
         }
-    }
+    },
+    "cSpell.userWords": [
+      "aeternity",
+      "lhaskell"
+    ]
 
 }

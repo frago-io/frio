@@ -83,6 +83,8 @@ in  {
     pkgs.haskellPackages.hasktags
     #pkgs.haskellPackages.stack
     pkgs.haskellPackages.hoogle
+    pkgs.haskellPackages.hlint
+    pkgs.haskellPackages.apply-refact
     pkgs.stylish-haskell
 
   ];

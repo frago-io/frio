@@ -201,6 +201,9 @@ with rec {
 
         coc-eslint
         coc-json
+        ## These should be installed with :CocInstall
+        #
+        #coc-spell-checker
         #coc-tsserver
 
         # FILES SEARCH AND NAVIGATION ***********************************
@@ -227,7 +230,7 @@ with rec {
         ; config = ''
             nnoremap ,m :NERDTreeToggle<cr>
             nnoremap ,n :NERDTreeFind<cr>
-            let g:NERDTreeWinSize=25
+            let g:NERDTreeWinSize=30
 
             " open nerdtree and focus on right
             "autocmd VimEnter * NERDTree
@@ -255,10 +258,21 @@ with rec {
         # SYNTAX ********************************************************
         BetterLua-vim
         jdaddy-vim
+        Tagbar
 
         # DOCS **********************************************************
         csv-vim
+        #Use it with --lang=en-us otherwise is not working
+        #Maybe we should create a shortcut
+        
 
+        { plugin = vim-grammarous
+        ; config = ''
+            nnoremap <silent> <leader>age :GrammarousCheck --lang=en-gb<CR>
+            nnoremap <silent> <leader>agr :GrammarousCheck --lang=ro<CR>
+          ''
+        ;
+        }
         # FUN ***********************************************************
         { plugin = vim-startify
         ; config = "let g:startify_change_to_vcs_root = 0"
@@ -395,7 +409,7 @@ with rec {
 
         { plugin = vim-gitgutter
         ; config = ''
-            let g:gitgutter_enabled = 0
+            "let g:gitgutter_enabled = 0
           ''
         ;
         }
