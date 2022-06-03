@@ -2,6 +2,7 @@
 
 #SHA256 example: ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
 #SHA256 example: sha256-ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=
+#sha256="sha256-ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=";
 with rec {
     cocFile = pkgs.writeTextFile
       { name = "coc-settings";
@@ -27,8 +28,8 @@ with rec {
       src = pkgs.fetchFromGitHub {
         owner = "yuki-ycino";
         repo="fzf-preview.vim";
-        rev="6580c6eb1170a176030fcc0d2eac8895d4571698";
-        sha256="Q1sReH92wy+g3hD9bSytAf8UAB2ON8J8Xc1uAkZwU/4=";
+        rev="c36727c1a94279ed6811f38272ad4a9637436c36";
+        sha256="sha256-dGo+GZqhrkXBP+xy/PvKLWcVsJPvP0+7HKxLBAow/fY=";
       };
     };
     paredit-vim = pkgs.vimUtils.buildVimPlugin {
@@ -207,7 +208,43 @@ with rec {
         #coc-tsserver
 
         # FILES SEARCH AND NAVIGATION ***********************************
-        taglist-vim                              # ctags mother of f___er
+        taglist-vim                              # Ctags mother of f___er
+        
+        { plugin = vim-devicons                  # Adds filetype glyphs (icons) to various vim plugins.
+        # WARN: if you disable it for NERDTree, disable it also vim-nerdtree-syntax-highlight plugin
+        ; config = ''
+            let g:webdevicons_enable_nerdtree = 1  " 0 for OFF , 1 for ON
+
+            let s:brown = "905532"
+            let s:aqua =  "3AFFDB"
+            let s:blue = "689FB6"
+            let s:darkBlue = "44788E"
+            let s:purple = "834F79"
+            let s:lightPurple = "834F79"
+            let s:red = "AE403F"
+            let s:beige = "F5C06F"
+            let s:yellow = "F09F17"
+            let s:orange = "D4843E"
+            let s:darkOrange = "F16529"
+            let s:pink = "CB6F6F"
+            let s:salmon = "EE6E73"
+            let s:green = "8FAA54"
+            let s:lightGreen = "31B53E"
+            let s:white = "FFFFFF"
+            let s:rspec_red = 'FE405F'
+            let s:git_orange = 'F54D27'
+
+            let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+            let g:NERDTreeExtensionHighlightColor['vim'] = s:blue
+            let g:NERDTreeExtensionHighlightColor['js'] = s:blue
+            let g:NERDTreeExtensionHighlightColor['ts'] = s:blue
+            let g:NERDTreeExtensionHighlightColor['sh'] = s:darkBlue
+          ''
+        ;
+        }
+
+        vim-nerdtree-syntax-highlight            # This is intended to be used with vim-devicons 
+                                                 # to add color to icons or entire labels
 
         { plugin = fzf-vim
         ; config = ''
@@ -247,6 +284,7 @@ with rec {
           ''
         ;
         }
+      
 
         ## AIRLINE *******************************************************
         { plugin = vim-airline
