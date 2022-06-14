@@ -27,6 +27,7 @@ alias tmk="tmux kill-server"
 #alias tmx="tmux -f $ZSH_TMUX_CONFIG"
 alias de='nvim -c "cd ~/.config/nixpkgs/" ~/.config/nixpkgs/home.nix'
 alias hh='home-manager switch'
+alias tmb='tmux kill-session -C'
 
 alias metal="ssh horus@metal"
 alias micro="ssh horus@micro"

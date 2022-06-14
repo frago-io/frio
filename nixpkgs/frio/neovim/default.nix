@@ -3,13 +3,7 @@
 #SHA256 example: ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
 #SHA256 example: sha256-ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=
 #sha256="sha256-ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=";
-with rec {
-    cocFile = pkgs.writeTextFile
-      { name = "coc-settings";
-        text = "{sdada}";
-        destination = "/c.json";
-      };
-  };
+with rec { };
   let
     dockerfile-vim = pkgs.vimUtils.buildVimPlugin {
       name = "dockerfile-vim";
@@ -162,6 +156,7 @@ with rec {
       plugins = with pkgs.vimPlugins; [
 
         # COLORS ********************************************************
+        ayu-vim
 
         { plugin = vim-colorschemes
         ; config = ''
@@ -297,6 +292,9 @@ with rec {
         BetterLua-vim
         jdaddy-vim
         Tagbar
+        vim-prisma
+        sophia-vim-syntax
+        vim-solidity
 
         # DOCS **********************************************************
         csv-vim
@@ -331,11 +329,6 @@ with rec {
           ''
         ;
         }
-        # AETERNITY *****************************************************
-        sophia-vim-syntax
-
-        # EHTER *****************************************************
-        vim-solidity
 
         # HASKELL *******************************************************
         vim-syntax-haskell-cabal
@@ -433,7 +426,6 @@ with rec {
         # OTHERS ********************************************************
         dockerfile-vim
         vim-nix
-        vim-prisma
 
         # GIT & DIFF ****************************************************
         vim-fugitive

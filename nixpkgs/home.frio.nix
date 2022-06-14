@@ -42,6 +42,7 @@ in  {
     pkgs.silver-searcher
     pkgs.gnupg
     pkgs.pinentry-curses
+    pkgs.ranger
 
     # core-*nix
     #pkgs.coreutils-full
@@ -64,14 +65,17 @@ in  {
 
     # LANG UTILS ****************************************************
     pkgs.ctags
+    pkgs.cloc
 
     # MONITOR / ADMIN  **********************************************
     pkgs.htop
+    pkgs.btop
 
     # FUN  **********************************************************
     pkgs.fortune
     pkgs.cowsay
     pkgs.lolcat
+    pkgs.ranger
     
     # HASKELL *******************************************************
     #pkgs.cabal-install
