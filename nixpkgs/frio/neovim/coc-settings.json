@@ -25,7 +25,7 @@
 
     "languageserver": {
         "haskell": {
-            "command": "haskell-language-server-8.10.7~1.7.0.0",
+            "command": "haskell-language-server-wrapper",
             "args": ["--lsp"],
             "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
             "filetypes": ["haskell", "lhaskell"]
