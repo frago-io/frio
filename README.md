@@ -45,3 +45,5 @@ bash <( curl -H 'Cache-Control: no-cache' -L -s https://bit.ly/3mSQTQX )
 :CocInstall coc-fzf-preview
 ```
 
+2. Haskell
+    NOTE: we disabled hls, please install haskell-language-server-1.7.0.0 from ghcup
