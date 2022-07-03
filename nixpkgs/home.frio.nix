@@ -29,7 +29,8 @@ in  {
       #pkgs.glibc
     ] else []
     ) ++ [
-    hlsp
+    #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
+    #hlsp
     #python-with-packages
 
     # UNIX UTILS  ***************************************************
