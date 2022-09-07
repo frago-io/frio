@@ -211,3 +211,7 @@ augroup END
 augroup Commented
 "autocmd FileType javascript setlocal omnifunc=echo
 augroup END
+
+augroup Sophia
+    autocmd Filetype aes       setlocal shiftwidth=2 softtabstop=2
+augroup END

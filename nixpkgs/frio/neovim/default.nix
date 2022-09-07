@@ -204,7 +204,7 @@ with rec { };
 
         # FILES SEARCH AND NAVIGATION ***********************************
         taglist-vim                              # Ctags mother of f___er
-        
+
         { plugin = vim-devicons                  # Adds filetype glyphs (icons) to various vim plugins.
         # WARN: if you disable it for NERDTree, disable it also vim-nerdtree-syntax-highlight plugin
         ; config = ''
@@ -238,7 +238,7 @@ with rec { };
         ;
         }
 
-        vim-nerdtree-syntax-highlight            # This is intended to be used with vim-devicons 
+        vim-nerdtree-syntax-highlight            # This is intended to be used with vim-devicons
                                                  # to add color to icons or entire labels
 
         { plugin = fzf-vim
@@ -289,7 +289,7 @@ with rec { };
           ''
         ;
         }
-      
+
 
         ## AIRLINE *******************************************************
         { plugin = vim-airline
@@ -310,7 +310,7 @@ with rec { };
         csv-vim
         #Use it with --lang=en-us otherwise is not working
         #Maybe we should create a shortcut
-        
+
 
         { plugin = vim-grammarous
         ; config = ''
