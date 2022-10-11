@@ -215,3 +215,7 @@ augroup END
 augroup Sophia
     autocmd Filetype aes       setlocal shiftwidth=2 softtabstop=2
 augroup END
+
+augroup Haskell
+    autocmd Filetype haskell   setlocal shiftwidth=2 softtabstop=2
+augroup END
