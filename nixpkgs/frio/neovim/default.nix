@@ -377,10 +377,10 @@ with rec { };
         neoformat                                 # we don't use this yet
                                                     # but it must be nice
 
-        { plugin = supertab
-        ; config = '' let g:SuperTabDefaultCompletionType = "<c-n>" ''
-        ;
-        }
+        #{ plugin = supertab
+        #; config = '' let g:SuperTabDefaultCompletionType = "<c-n>" ''
+        #;
+        #}
 
         { plugin = LanguageClient-neovim
         ; config = ''

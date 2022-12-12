@@ -133,5 +133,16 @@ augroup coc
     endfunction
     command! -nargs=0 Syn call Syn()
 
+    "To make <cr> select the first completion item and confirm the completion when no item has been selected:
+    inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+    inoremap <silent><expr> <C-space> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+
+    "Use <Tab> and <S-Tab> to navigate the completion list:
+    inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+    inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+
 augroup END
 
