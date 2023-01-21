@@ -109,7 +109,7 @@ augroup TerminalShit
     let t_8b = "[48:2:%lu:%lu:%lum"
 augroup END
 
-command JSONFormat :%!python -m json.tool
+command JSONFormat :%!jq '.'
 
 augroup GenericKeyMapings
     "search
@@ -218,4 +218,12 @@ augroup END
 
 augroup Haskell
     autocmd Filetype haskell   setlocal shiftwidth=2 softtabstop=2
+augroup END
+
+augroup Haskell
+    let g:neovide_input_use_logo = 1
+    map <D-v> "+p<CR>
+    map! <D-v> <C-R>+
+    tmap <D-v> <C-R>+
+    vmap <D-c> "+y<CR>
 augroup END

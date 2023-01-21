@@ -27,6 +27,7 @@ in  {
       #pkgs.gmp4
       #pkgs.binutils
       #pkgs.glibc
+      pkgs.neovide
     ] else []
     ) ++ [
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
