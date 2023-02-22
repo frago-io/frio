@@ -227,3 +227,8 @@ augroup Haskell
     tmap <D-v> <C-R>+
     vmap <D-c> "+y<CR>
 augroup END
+
+augroup Copilot
+    inoremap π <Plug>(copilot-next)
+    inoremap ø <Plug>(copilot-previous)
+augroup END

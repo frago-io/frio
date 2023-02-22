@@ -46,6 +46,16 @@ with rec { };
         sha256="0ws532zksf117zcpwwn60acmy2plbkyswbcv2p3yhicyb0grsd1i";
       };
     };
+    ale = pkgs.vimUtils.buildVimPlugin {
+      name = "ale";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "dense-analysis";
+        repo="ale";
+        rev="69c1dc8b5f3d215d4a0538265b2d257c2ed7a8fa";
+        sha256="sha256-PkK9Jhp4tsF7plKhxFgPvaUJmJ1AXXMAnX+ACJJOWQI=";
+      };
+    };
     vim-rest-console = pkgs.vimUtils.buildVimPlugin {
       name = "vim-rest-console";
       src = pkgs.fetchFromGitHub {
@@ -388,10 +398,10 @@ with rec { };
         '';
         }
 
-        #{ plugin = ale
-        #; config = '' ${(builtins.readFile ./ale.rc.vim)} ''
-        #;
-        #}
+        { plugin = ale
+        ; config = '' ${(builtins.readFile ./ale.rc.vim)} ''
+        ;
+        }
 
 
         # TEXT MANIPULATION  ********************************************

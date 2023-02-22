@@ -4,19 +4,20 @@ augroup Ale
 
     let g:ale_linters = {
                 \  'haskell': ['hlint'],
-                \  'cs': ['OmniSharp'],
                 \}
+                ""\  'cs': ['OmniSharp'],
                 "\  'javascript': ['eslint','flow'],
                 "\  'typescript': [ 'tslint', 'tsserver'],
     let g:ale_fixers = {
                 \  'haskell': ['hlint','stylish-haskell'],
-                \  'javascript': ['eslint'],
                 \  'vue': ['eslint'],
                 \}
+                """\  'haskell': ['hlint'],
+                ""\  'javascript': ['eslint'],
                 "\  'typescript': ['tslint'],
     let g:ale_fix_on_save = 1
-    let g:ale_javascript_eslint_use_global = 1
-    let g:ale_javascript_flow_use_global = 1
+    "let g:ale_javascript_eslint_use_global = 1
+    "let g:ale_javascript_flow_use_global = 1
     let g:ale_set_highlights = 1
 
     let g:airline#extensions#ale#enabled = 1
@@ -53,8 +54,8 @@ augroup Ale
     let g:ale_echo_msg_format = '%linter% says %s'
 
     " Map keys to navigate between lines with errors and warnings.
-    nnoremap <leader>an :ALENextWrap<cr>
-    nnoremap <leader>ap :ALEPreviousWrap<cr>
+    "nnoremap <leader>an :ALENextWrap<cr>
+    "nnoremap <leader>ap :ALEPreviousWrap<cr>
     nnoremap gn :ALENextWrap<cr>
     nnoremap gp :ALEPreviousWrap<cr>
 

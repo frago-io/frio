@@ -30,6 +30,7 @@ in  {
       pkgs.neovide
     ] else []
     ) ++ [
+    pkgs.qemu
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
     #hlsp
     #python-with-packages
@@ -89,7 +90,7 @@ in  {
     pkgs.haskellPackages.hasktags
     #pkgs.haskellPackages.stack
     pkgs.haskellPackages.hoogle
-    pkgs.haskellPackages.hlint
+    #pkgs.haskellPackages.hlint
     pkgs.haskellPackages.apply-refact
     pkgs.stylish-haskell
 

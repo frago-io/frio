@@ -36,7 +36,6 @@ alias pi="ssh pi@pi"
 alias apopos="ssh apophis@popos"
 alias bcat='bat --paging=never'
 
-
 commitAll() {
     if [ $# -eq 0 ]
         then
