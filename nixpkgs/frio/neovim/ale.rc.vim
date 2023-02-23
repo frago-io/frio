@@ -9,10 +9,10 @@ augroup Ale
                 "\  'javascript': ['eslint','flow'],
                 "\  'typescript': [ 'tslint', 'tsserver'],
     let g:ale_fixers = {
-                \  'haskell': ['hlint','stylish-haskell'],
+                "\  'haskell': ['hlint'],
                 \  'vue': ['eslint'],
                 \}
-                """\  'haskell': ['hlint'],
+                """\  'haskell': ['hlint','stylish-haskell'],
                 ""\  'javascript': ['eslint'],
                 "\  'typescript': ['tslint'],
     let g:ale_fix_on_save = 1
