@@ -6,6 +6,13 @@ let
       enable = true;
       autocd = true;
       enableAutosuggestions = true;
+      enableCompletion = true;
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "nix-community/nix-zsh-completions"; } 
+        ];
+      };
       initExtra = ''
           ${(builtins.readFile ./utils.sh)}
           ${(builtins.readFile ./zshrc)}
@@ -18,6 +25,9 @@ let
           #unalias ls
           alias ls="${ls}/bin/ls --color=auto -F"
           alias la="ls -lAh --group-directories-first"
+
+          unalias lsa
+          #alias lsa="ls -lAh --group-directories-first"
         '';
       initExtraFirst = ''
           ${(builtins.readFile ./first-zshrc.sh)}

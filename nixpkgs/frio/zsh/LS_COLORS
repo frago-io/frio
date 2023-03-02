@@ -39,7 +39,8 @@ CAPABILITY            38;5;17             # core
 CHR                   38;5;113;1          # core
 #DIR                  129;162;190         # core
 DOOR                  38;5;127            # core
-#EXEC                 38;5;208;1          # core
+#EXEC                 38;5;208;1          # core ORIGINAL
+EXEC                  38;5;114;1          # core like mov
 #EXEC                  38;5;184;1          # core
 FIFO                  38;5;126            # core
 FILE                  0                   # core
@@ -314,6 +315,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3 # core
 .vba                  38;5;81             # VBA
 .vbs                  38;5;81             # VBA
 *Dockerfile           38;5;155            # Build process (Docker)
+*Dockerfile.*         38;5;155            # Build process (Docker)
 .dockerignore         38;5;240            # Build process (Docker)
 *Makefile             38;5;155            # Build process (Make)
 *MANIFEST             38;5;243            # Build process (Make)

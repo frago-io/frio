@@ -229,6 +229,11 @@ augroup Haskell
 augroup END
 
 augroup Copilot
+    inoremap <M-p> <Plug>(copilot-next)
     inoremap π <Plug>(copilot-next)
+    inoremap <M-n> <Plug>(copilot-next)
     inoremap ø <Plug>(copilot-previous)
+    let g:copilot_no_tab_map = v:true
+    let g:copilot_assume_mapped = v:true
+    imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
 augroup END

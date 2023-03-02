@@ -102,3 +102,5 @@ export PATH=./node_modules/.bin:$PATH
 #disable these for zsh tmux plugin
 export ZSH_TMUX_CONFIG=
 export ZSH_TMUX_FIXTERM=
+
+export EDITOR=nvim;

@@ -8,6 +8,12 @@ let
   tmux = import ./frio/tmux common;
   userInfo = import ./frio/_user.info.nix;
   hlsp= import ./frio/haskell/lsp/default.nix;
+  comma = (import (pkgs.fetchFromGitHub {
+    owner = "nix-community";
+    repo = "comma";
+    rev = "v1.4.1";
+    sha256 = "sha256-5M2VVrYH+IAa1P7Qz9gUPS3YNdqeVOoa1riV8eTtoYE=";
+  })).default;
 
   python-packages = pyPacks: with pyPacks; [
     #pandas
@@ -30,6 +36,7 @@ in  {
       pkgs.neovide
     ] else []
     ) ++ [
+    comma
     pkgs.qemu
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
     #hlsp
