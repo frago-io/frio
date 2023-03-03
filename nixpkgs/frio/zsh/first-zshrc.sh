@@ -12,3 +12,6 @@ if [ -z "$NIX_PATH" ] && [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ];
     then . $HOME/.nix-profile/etc/profile.d/nix.sh; 
 fi # added by Nix installer
 
+run() {
+    nix run nixpkgs#$1 -- ${@:2}
+}
