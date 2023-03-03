@@ -36,7 +36,10 @@ in  {
       pkgs.neovide
     ] else []
     ) ++ [
+    # custom packages
     comma
+
+    # 
     pkgs.qemu
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
     #hlsp
@@ -53,6 +56,9 @@ in  {
     pkgs.gnupg
     pkgs.pinentry-curses
     pkgs.ranger
+    pkgs.mc
+    pkgs.wget
+    pkgs.curl
 
     # core-*nix
     #pkgs.coreutils-full
@@ -86,6 +92,9 @@ in  {
     pkgs.cowsay
     pkgs.lolcat
     pkgs.ranger
+
+    # NIX  **********************************************************
+    pkgs.rnix-lsp
     
     # HASKELL *******************************************************
     #pkgs.cabal-install
