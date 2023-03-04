@@ -211,6 +211,7 @@ with rec { };
         #
         #coc-spell-checker
         #coc-tsserver
+        #coc-fzf-preview
 
         # FILES SEARCH AND NAVIGATION ***********************************
         taglist-vim                              # Ctags mother of f___er
