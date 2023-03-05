@@ -3,6 +3,7 @@ let
   common = {
     inherit config pkgs;
   };
+  isDarwin = builtins.elem builtins.currentSystem [ "x86_64-darwin" "aarch64-darwin" ];
   neovim = import ./frio/neovim common;
   zsh = import ./frio/zsh common;
   tmux = import ./frio/tmux common;
@@ -14,14 +15,7 @@ let
     rev = "v1.4.1";
     sha256 = "sha256-5M2VVrYH+IAa1P7Qz9gUPS3YNdqeVOoa1riV8eTtoYE=";
   })).default;
-
-  python-packages = pyPacks: with pyPacks; [
-    #pandas
-    #requests
-    # other python packages you want
-  ]; 
-  python-with-packages = pkgs.python3.withPackages python-packages;
-  isDarwin = builtins.currentSystem == "x86_64-darwin";
+  my-python = import ./frio/python.nix (common // { isDarwin = isDarwin; });
 
 in  {
   home.packages = (
@@ -43,7 +37,7 @@ in  {
     pkgs.qemu
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
     #hlsp
-    #python-with-packages
+    my-python
 
     # UNIX UTILS  ***************************************************
     pkgs.git
