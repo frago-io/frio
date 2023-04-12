@@ -220,6 +220,13 @@ augroup Haskell
     autocmd Filetype haskell   setlocal shiftwidth=2 softtabstop=2
 augroup END
 
+augroup Javascript
+    autocmd Filetype javascript        setlocal shiftwidth=2 softtabstop=2
+    autocmd Filetype vue               setlocal shiftwidth=2 softtabstop=2
+    autocmd Filetype typescript        setlocal shiftwidth=2 softtabstop=2
+    autocmd Filetype typescriptreact   setlocal shiftwidth=2 softtabstop=2
+augroup END
+
 augroup Haskell
     let g:neovide_input_use_logo = 1
     map <D-v> "+p<CR>

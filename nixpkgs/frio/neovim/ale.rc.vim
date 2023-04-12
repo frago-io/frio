@@ -4,6 +4,7 @@ augroup Ale
 
     let g:ale_linters = {
                 \  'haskell': ['hlint'],
+                \  'javascript': [],
                 \}
                 ""\  'cs': ['OmniSharp'],
                 "\  'javascript': ['eslint','flow'],
