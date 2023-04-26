@@ -2,6 +2,7 @@
 source ./utils.sh
 
 nixpkgs="$HOME/.config/nixpkgs"
+homemanager="$HOME/.config/home-manager"
 nixhere=$(pwd)/nixpkgs
 nvim="$HOME/.config/nvim"
 
@@ -62,6 +63,7 @@ ensureLink() {
 
 testLink $nixpkgs/frio $nixhere/frio
 testLink $nixpkgs/home.nix $nixhere/home.frio.nix
+testLink $homemanager/home.nix $nixhere/home.frio.nix
 testLink $nvim/coc-settings.json $nixhere/frio/neovim/coc-settings.json
 
 ensureLink $nixpkgs/frio $nixhere/frio

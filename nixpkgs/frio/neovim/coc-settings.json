@@ -63,6 +63,7 @@
       "mempty",
       "metavar",
       "printf",
+      "sparkline",
       "vite",
       "vuex",
       "wich"
