@@ -33,7 +33,9 @@ let
 
       oh-my-zsh = {
         enable = true;
-        theme = "gianu";
+        #theme = "gianu";
+        #theme = "mh";
+        theme = "refined";
         plugins=["git" "tmux" "docker" "vi-mode" "systemd" "z" ];
       };
   }
