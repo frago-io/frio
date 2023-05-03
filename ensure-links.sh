@@ -68,4 +68,5 @@ testLink $nvim/coc-settings.json $nixhere/frio/neovim/coc-settings.json
 
 ensureLink $nixpkgs/frio $nixhere/frio
 ensureLink $nixpkgs/home.nix $nixhere/home.frio.nix
+ensureLink $homemanager/home.nix $nixhere/home.frio.nix
 ensureLink $nvim/coc-settings.json $nixhere/frio/neovim/coc-settings.json
