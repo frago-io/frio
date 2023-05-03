@@ -8,7 +8,7 @@ let
       enableAutosuggestions = true;
       enableCompletion = true;
       zplug = {
-        enable = true;
+        enable = false; 
         plugins = [
           { name = "nix-community/nix-zsh-completions"; } 
         ];
