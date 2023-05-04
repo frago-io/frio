@@ -35,6 +35,8 @@ alias rock="ssh rock@rock"
 alias pi="ssh pi@pi"
 alias apopos="ssh apophis@popos"
 alias bcat='bat --paging=never'
+#If your mc starts slowly, try to disable subshell support, but in your .extra.zshrc
+#alias mc="mc --nosubshell"
 
 commitAll() {
     if [ $# -eq 0 ]
@@ -53,9 +55,9 @@ makeDefaultShell() {
     local shells=$(cat /etc/shells)
     local zsh=zsh
 
-    if [[ $SHELL != $nix_zsh ]]; 
-        then 
-            if [[ $shells != *$nix_zsh* ]]; then 
+    if [[ $SHELL != $nix_zsh ]];
+        then
+            if [[ $shells != *$nix_zsh* ]]; then
                 cmd="(echo \"$nix_zsh\" | sudo tee -a /etc/shells) && "$cmd
             fi
             eval $cmd
