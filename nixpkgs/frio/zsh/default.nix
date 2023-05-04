@@ -2,6 +2,7 @@
 
 let 
     ls = import ./ls.nix;
+    custom = import ./custom;
     in {
       enable = true;
       autocd = true;
@@ -31,11 +32,13 @@ let
           ${(builtins.readFile ./first-zshrc.sh)}
         '';
 
-      oh-my-zsh = {
+        oh-my-zsh = {
+        custom="${custom}";
         enable = true;
         #theme = "gianu";
         #theme = "mh";
-        theme = "refined";
+        #theme = "refined";
+        theme = "my-refined";
         plugins=["git" "tmux" "docker" "vi-mode" "systemd" "z" ];
       };
   }
