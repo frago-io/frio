@@ -18,6 +18,7 @@ sameLink() {
 }
 
 mkdir -p $nixpkgs
+mkdir -p $homemanager
 
 testLink() {
     file=$1
