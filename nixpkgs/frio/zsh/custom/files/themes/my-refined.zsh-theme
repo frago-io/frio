@@ -46,10 +46,23 @@ git_dirty() {
     command git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ] && echo "*"
 }
 
+git_branch() {
+  #local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+  echo "$vcs_info_msg_1_`git_dirty` $vcs_info_msg_2_"
+}
+
 # Display information about the current repository
 #
-repo_information() {
-    echo "%F{blue}${vcs_info_msg_0_%%/.} %F{8}$vcs_info_msg_1_`git_dirty` $vcs_info_msg_2_%f"
+general_information() {
+    #echo "%F{blue}${vcs_info_msg_0_%%/.} %F{8}$vcs_info_msg_1_`git_dirty` $vcs_info_msg_2_%f"
+    local system="${NIX_CONFIG#*=}"
+
+    if [ -n "$system" ]; then
+        system=`echo $system | sed -e 's/^[[:space:]]*//'`
+        echo "%F{blue}${vcs_info_msg_0_%%/.} %F{8}${SSH_TTY:+%n@%m} ($system) %F{8}$vcs_info_msg_2_%f"
+    else
+        echo "%F{blue}${vcs_info_msg_0_%%/.} %F{8}${SSH_TTY:+%n@%m} %F{8}$vcs_info_msg_2_%f"
+    fi
 }
 
 # Displays the exec time of the last command if set threshold was exceeded
@@ -72,14 +85,17 @@ preexec() {
 precmd() {
     setopt localoptions nopromptsubst
     vcs_info # Get version control info before we start outputting stuff
-    print -P "\n$(repo_information) %F{yellow}$(cmd_exec_time)%f"
+    print -P "\n$(general_information) %F{yellow}$(cmd_exec_time)%f"
     unset cmd_timestamp #Reset cmd exec time.
 }
 
 # Define prompts
 #
 PROMPT="%(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
-RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"    # Display username if connected via SSH
+#PROMPT="%(?.%F{red}.%F{196})❯%f " # Display a red prompt char on failure
+#RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"    # Display username if connected via SSH
+#display git info in right prompt
+RPROMPT='%F{yellow}$(git_branch)%f'
 
 # ------------------------------------------------------------------------------
 #

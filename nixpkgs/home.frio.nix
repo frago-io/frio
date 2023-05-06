@@ -53,6 +53,7 @@ in  {
     pkgs.mc
     pkgs.wget
     pkgs.curl
+    pkgs.browsh
 
     # core-*nix
     #pkgs.coreutils-full
