@@ -57,11 +57,13 @@ general_information() {
     #echo "%F{blue}${vcs_info_msg_0_%%/.} %F{8}$vcs_info_msg_1_`git_dirty` $vcs_info_msg_2_%f"
     local system="${NIX_CONFIG#*=}"
 
+    local prefix="%F{blue}${vcs_info_msg_0_%%/.} %F{8}${SSH_TTY:+%n@}%F{8}${SSH_TTY:+%m}%f"
+    local sufix="%F{8}$vcs_info_msg_2_%F{blue}$hasNixShell%f"
     if [ -n "$system" ]; then
         system=`echo $system | sed -e 's/^[[:space:]]*//'`
-        echo "%F{blue}${vcs_info_msg_0_%%/.} %F{8}${SSH_TTY:+%n@%m} ($system) %F{8}$vcs_info_msg_2_%f"
+        echo "$prefix %F{8}($system)%f $sufix"
     else
-        echo "%F{blue}${vcs_info_msg_0_%%/.} %F{8}${SSH_TTY:+%n@%m} %F{8}$vcs_info_msg_2_%f"
+        echo "$prefix $sufix"
     fi
 }
 
@@ -96,6 +98,17 @@ PROMPT="%(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
 #RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"    # Display username if connected via SSH
 #display git info in right prompt
 RPROMPT='%F{yellow}$(git_branch)%f'
+
+parent_pid=$(ps -o ppid= $$)
+hasNixShell=""
+# while non empty or not 0 and nix-shell not found
+while [ -n "$parent_pid" ] && [ "$parent_pid" -ne 0 ] && [ -z "$hasNixShell" ]; do
+    hasNixShell=$(ps -f -p "$parent_pid" | grep nix-shell)
+    # turn hasNixShell into a boolean
+    hasNixShell=${hasNixShell:+(❄️-shell)}
+    parent_pid=$(ps -o ppid= "$parent_pid")
+    parent_pid=`echo $parent_pid | sed -e 's/^[[:space:]]*//'`
+done
 
 # ------------------------------------------------------------------------------
 #
