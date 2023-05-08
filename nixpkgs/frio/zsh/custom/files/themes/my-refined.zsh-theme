@@ -97,7 +97,7 @@ PROMPT="%(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
 #PROMPT="%(?.%F{red}.%F{196})❯%f " # Display a red prompt char on failure
 #RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"    # Display username if connected via SSH
 #display git info in right prompt
-RPROMPT='%F{yellow}$(git_branch)%f'
+RPROMPT='%F{yellow}$(git_prompt_info)%f'
 
 parent_pid=$(ps -o ppid= $$)
 hasNixShell=""
