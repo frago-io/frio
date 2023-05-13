@@ -83,6 +83,16 @@ with rec { };
         sha256="0x34nbnj89b78ywiwazdpj5xnpvff9r6hh5hgyy6iz2jg9azpw7j";
       };
     };
+    nordic = pkgs.vimUtils.buildVimPlugin {
+      name = "nordic.nvim";
+      pname = "nordic.nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "AlexvZyl";
+        repo="nordic.nvim";
+        rev="bd4cf4e";
+        sha256="sha256-3SxtUWPtvMXJLDm2LBsoi9Lqwdr6YieAI6WB0i8mqLE=";
+      };
+    };
     vim-colorscheme-switcher = pkgs.vimUtils.buildVimPlugin {
       name = "vim-colorscheme-switcher";
       pname = "vim-colorscheme-switcher";
@@ -167,7 +177,7 @@ with rec { };
 
         # COLORS ********************************************************
         ayu-vim
-
+        nordic
         { plugin = vim-colorschemes
         ; config = ''
             "WARNING: don't forget to comment one-dark if you use this
@@ -283,7 +293,7 @@ with rec { };
         ; config = ''
             nnoremap ,m :NERDTreeToggle<cr>
             nnoremap ,n :NERDTreeFind<cr>
-            let g:NERDTreeWinSize=30
+            let g:NERDTreeWinSize=35
 
             " open nerdtree and focus on right
             "autocmd VimEnter * NERDTree

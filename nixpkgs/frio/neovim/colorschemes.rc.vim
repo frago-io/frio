@@ -25,6 +25,7 @@
 "colorscheme gruvbox
 set termguicolors
 colorscheme nord
+"colorscheme nordic -- this is nice, you should try it from time to time
 
 "Ayu
 "let ayucolor="light"  " for light version of theme
