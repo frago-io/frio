@@ -25,11 +25,6 @@ let
                  %endif
                  set -g status-right $VALUE
                 '';
-            }{
-              plugin = tmuxPlugins.better-mouse-mode;
-              extraConfig = ''
-                set-option -g mouse on
-                '';
             }
             tmuxPlugins.battery
             tmuxPlugins.sysstat
