@@ -37,6 +37,7 @@
         }
     },
     "cSpell.userWords": [
+      "Algo",
       "Failable",
       "Frago",
       "IOHK",
@@ -54,6 +55,7 @@
       "aettos",
       "aeusd",
       "bimap",
+      "concat",
       "fmap",
       "foldl",
       "foldr",
