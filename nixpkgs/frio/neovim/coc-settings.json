@@ -37,6 +37,7 @@
         }
     },
     "cSpell.userWords": [
+      "Algo",
       "Failable",
       "Frago",
       "IOHK",
@@ -53,6 +54,7 @@
       "aeternity",
       "aeusd",
       "bimap",
+      "concat",
       "fmap",
       "foldl",
       "foldr",
@@ -61,6 +63,7 @@
       "lhaskell",
       "linkedin",
       "mempty",
+      "metadatas",
       "metavar",
       "printf",
       "sparkline",
