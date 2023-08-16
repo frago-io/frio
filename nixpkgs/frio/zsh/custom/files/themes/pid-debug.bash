@@ -2,6 +2,10 @@ parent_pid=$(ps -o ppid= $$)
 hasNixShell=""
 # while non empty or not 0 and nix-shell not found
 while [ -n "$parent_pid" ] && [ "$parent_pid" -ne 0 ] && [ -z "$hasNixShell" ]; do
+    echo "!"$parent_pid"!"
+    parent_pid=`echo $parent_pid | sed 's/ *$//g'`
+    echo "!"$parent_pid"!"
+    echo "ps -f -p "$parent_pid" | grep nix-shell"
     hasNixShell=$(ps -f -p "$parent_pid" | grep nix-shell)
     # turn hasNixShell into a boolean
     hasNixShell=${hasNixShell:+(❄️-shell)}
