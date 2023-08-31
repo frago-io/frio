@@ -55,6 +55,9 @@ in  {
     pkgs.curl
     pkgs.browsh
 
+    # GIT **********************************************************
+    pkgs.lazygit
+
     # core-*nix
     #pkgs.coreutils-full
     #pkgs.gnumake
