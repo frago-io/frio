@@ -54,6 +54,7 @@ in  {
     pkgs.wget
     pkgs.curl
     pkgs.browsh
+    pkgs.neofetch
 
     # GIT **********************************************************
     pkgs.lazygit
