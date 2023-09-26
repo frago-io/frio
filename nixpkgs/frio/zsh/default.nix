@@ -46,6 +46,7 @@ let
           "vi-mode"
           "systemd"
           "z"
+          "web-search"
         ];
       };
   }
