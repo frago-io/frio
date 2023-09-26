@@ -39,6 +39,14 @@ let
         #theme = "mh";
         #theme = "refined";
         theme = "my-refined";
-        plugins=["git" "tmux" "docker" "vi-mode" "systemd" "z" ];
+        plugins=
+          [ "git"
+          "tmux"
+          "docker"
+          "vi-mode"
+          "systemd"
+          "z"
+          "sudo"
+        ];
       };
   }
