@@ -9,7 +9,7 @@ with rec { };
       name = "dockerfile-vim";
 
       src = pkgs.fetchFromGitHub {
-        owner = "bogdan-manole";
+        owner = "ekalinin";
         repo="Dockerfile.vim";
         rev="31710bacdc30f6fb9df51f9d4e0c03bea34cc520";
         sha256="1hz7mpi531lxqvxn7ygpsa5zpgmr6i0ivi5rjszmnmqhriafvp3k";
@@ -22,8 +22,8 @@ with rec { };
       src = pkgs.fetchFromGitHub {
         owner = "yuki-ycino";
         repo="fzf-preview.vim";
-        rev="c36727c1a94279ed6811f38272ad4a9637436c36";
-        sha256="sha256-dGo+GZqhrkXBP+xy/PvKLWcVsJPvP0+7HKxLBAow/fY=";
+        rev="933836744ad5907653bc903d027eb1a08ed95811";
+        sha256="sha256-79cGIbnSv23Rv1kRFMHxHI5+dRuoOE+o0AJJluZz85s=";
       };
     };
     paredit-vim = pkgs.vimUtils.buildVimPlugin {
@@ -52,8 +52,8 @@ with rec { };
       src = pkgs.fetchFromGitHub {
         owner = "dense-analysis";
         repo="ale";
-        rev="69c1dc8b5f3d215d4a0538265b2d257c2ed7a8fa";
-        sha256="sha256-PkK9Jhp4tsF7plKhxFgPvaUJmJ1AXXMAnX+ACJJOWQI=";
+        rev="53b01d6a546384a28f1ccbed41baae58d7341da4";
+        sha256="sha256-Mz6b2sFjf/iqrSZWoFGqs3EG3G5+lOJTqgWJo/3rGss=";
       };
     };
     vim-rest-console = pkgs.vimUtils.buildVimPlugin {
@@ -89,8 +89,8 @@ with rec { };
       src = pkgs.fetchFromGitHub {
         owner = "AlexvZyl";
         repo="nordic.nvim";
-        rev="bd4cf4e";
-        sha256="sha256-3SxtUWPtvMXJLDm2LBsoi9Lqwdr6YieAI6WB0i8mqLE=";
+        rev="be1bab59c56668af7020af11190ec7fcd25d59b4";
+        sha256="sha256-nL2L7nDZD3mf/UrdYN5ZX1pWFFEgQKz5vUF+bRh7ny8==";
       };
     };
     vim-colorscheme-switcher = pkgs.vimUtils.buildVimPlugin {
@@ -147,25 +147,25 @@ with rec { };
       src = pkgs.fetchFromGitHub {
         owner = "itchyny";
         repo="vim-haskell-indent";
-        rev="192d01ecdacf53d041d05760a1ed45a65be025d8";
-        sha256="sha256-eW0wwhR8XookrECdnYpT+gCNkkmpF7WsTbobcFBtqMU=";
+        rev="32af0fe63e961f56ea7faa66c3baa43460b9acd3";
+        sha256="sha256-Y/mabXsZd9NF0550rU9lY2208/o6LENTQpcSb4MnUuU=";
       };
     };
-    #NOTE: This is not th original repo, switch back to `monkoose` after
-    # https://github.com/monkoose/fzf-hoogle.vim/issues/9 is closed
-    fzf-hoogle-vim = pkgs.vimUtils.buildVimPlugin {
-      name = "fzf-hoogle-vim";
-      pname = "fzf-hoogle-vim";
-      src = pkgs.fetchFromGitHub {
-        #owner = "monkoose";
-        owner = "gvolpe";
-        repo="fzf-hoogle.vim";
-        rev="0c1620d9e0216c93f894d908e4eb8c513aaa79fc";
-        sha256="sha256-2siW5+cZhXusba9MyRx7YQlxQHc9Fy00FXtHUx7aQ5o=";
-        #rev="5526cf047ef1b9fe89f3aa617ba4020e180d8355";
-        #sha256="0avfqnsdqv0lbxg8nsygq87951c3kr6ld9flnkys04nn1gkx8sbw";
-      };
-    };
+    ##NOTE: This is not th original repo, switch back to `monkoose` after
+    ## https://github.com/monkoose/fzf-hoogle.vim/issues/9 is closed
+    #fzf-hoogle-vim = pkgs.vimUtils.buildVimPlugin {
+      #name = "fzf-hoogle-vim";
+      #pname = "fzf-hoogle-vim";
+      #src = pkgs.fetchFromGitHub {
+        ##owner = "monkoose";
+        #owner = "gvolpe";
+        #repo="fzf-hoogle.vim";
+        #rev="0c1620d9e0216c93f894d908e4eb8c513aaa79fc";
+        #sha256="sha256-2siW5+cZhXusba9MyRx7YQlxQHc9Fy00FXtHUx7aQ5o=";
+        ##rev="5526cf047ef1b9fe89f3aa617ba4020e180d8355";
+        ##sha256="0avfqnsdqv0lbxg8nsygq87951c3kr6ld9flnkys04nn1gkx8sbw";
+      #};
+    #};
 
     in {
       enable = true;
