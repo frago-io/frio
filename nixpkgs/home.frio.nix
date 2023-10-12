@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let 
+let
   common = {
     inherit config pkgs;
   };
@@ -33,7 +33,7 @@ in  {
     # custom packages
     comma
 
-    # 
+    #
     pkgs.qemu
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
     #hlsp
@@ -81,6 +81,7 @@ in  {
     # LANG UTILS ****************************************************
     pkgs.ctags
     pkgs.cloc
+    pkgs.nodePackages.yaml-language-server
 
     # MONITOR / ADMIN  **********************************************
     pkgs.htop
@@ -94,7 +95,7 @@ in  {
 
     # NIX  **********************************************************
     pkgs.rnix-lsp
-    
+
     # HASKELL *******************************************************
     #pkgs.cabal-install
     #pkgs.haskell.compiler.ghc865
