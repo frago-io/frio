@@ -393,6 +393,7 @@ with rec { };
         vim-javascript
         typescript-vim
         vim-tsx
+        vim-pug
 
         # CODE VALIDATION AND COMPLETION ********************************
         neoformat                                 # we don't use this yet
