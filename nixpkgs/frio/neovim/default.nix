@@ -3,6 +3,7 @@
 #SHA256 example: ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
 #SHA256 example: sha256-ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=
 #sha256="sha256-ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=";
+#sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 with rec { };
   let
     dockerfile-vim = pkgs.vimUtils.buildVimPlugin {
@@ -151,6 +152,15 @@ with rec { };
         sha256="sha256-Y/mabXsZd9NF0550rU9lY2208/o6LENTQpcSb4MnUuU=";
       };
     };
+    vim-notify = pkgs.vimUtils.buildVimPlugin {
+      name = "nvim-notify";
+      src = pkgs.fetchFromGitHub {
+        owner = "rcarriga";
+        repo="nvim-notify";
+        rev="ea9c8ce";
+        sha256="sha256-Rr2tzuEr06M9ZbvQbC07qcxkyjFJFYdABwRpYelKBFI=";
+      };
+    };
     ##NOTE: This is not th original repo, switch back to `monkoose` after
     ## https://github.com/monkoose/fzf-hoogle.vim/issues/9 is closed
     #fzf-hoogle-vim = pkgs.vimUtils.buildVimPlugin {
@@ -208,6 +218,9 @@ with rec { };
           ''
         ;
         }
+        # TODO: ***********************************************************
+        glance-nvim # this requires nvim lsp, when we will switch from COC
+                    # to nvim lsp we will use this
 
         # COC ***********************************************************
         { plugin = coc-nvim
@@ -479,8 +492,7 @@ with rec { };
         nerdtree-git-plugin
         gundo-vim
         vim-rest-console
-
-
+        vim-notify
 
     ];
     extraConfig = ''
