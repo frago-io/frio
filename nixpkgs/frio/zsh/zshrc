@@ -35,6 +35,9 @@ alias rock="ssh rock@rock"
 alias pi="ssh pi@pi"
 alias apopos="ssh apophis@popos"
 alias bcat='bat --paging=never'
+
+# Alias nix to nix -L to show --print-build-logs and --verbose
+alias nix='nix -L'
 #If your mc starts slowly, try to disable subshell support, but in your .extra.zshrc
 #alias mc="mc --nosubshell"
 
