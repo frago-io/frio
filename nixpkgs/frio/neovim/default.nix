@@ -355,7 +355,10 @@ with rec { };
         }
         # FUN ***********************************************************
         { plugin = vim-startify
-        ; config = "let g:startify_change_to_vcs_root = 0"
+        ; config = ''
+            let g:startify_change_to_vcs_root = 0
+            let g:startify_change_to_dir = 0
+          ''
         ;
         }
 
