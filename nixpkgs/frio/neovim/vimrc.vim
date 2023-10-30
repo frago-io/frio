@@ -158,8 +158,10 @@ augroup GenericKeyMapings
     tnoremap <Esc> <C-\><C-n>
 
 augroup END
-
 augroup Scrolloff
+    " default stay at the middle of the screen
+    set scrolloff=999
+    " toggle between default and 0
     nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
     set cursorline
 augroup END

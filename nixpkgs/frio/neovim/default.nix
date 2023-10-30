@@ -219,7 +219,7 @@ with rec { };
         ;
         }
         # TODO: ***********************************************************
-        glance-nvim # this requires nvim lsp, when we will switch from COC
+        #glance-nvim # this requires nvim lsp, when we will switch from COC
                     # to nvim lsp we will use this
 
         # COC ***********************************************************
