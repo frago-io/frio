@@ -28,7 +28,9 @@ in  {
       #pkgs.binutils
       #pkgs.glibc
       pkgs.neovide
-    ] else []
+  ] else [
+      #WARNING: neve ever ever ever try to install macvim, please don't
+  ]
     ) ++ [
     # custom packages
     comma

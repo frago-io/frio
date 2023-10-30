@@ -244,3 +244,7 @@ augroup Copilot
     let g:copilot_assume_mapped = v:true
     imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
 augroup END
+
+augroup Neovide
+    set guifont=MesloLGS\ Nerd\ Font:h14.5
+augroup END
