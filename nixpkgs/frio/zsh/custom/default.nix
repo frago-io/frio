@@ -8,6 +8,8 @@ stdenv.mkDerivation {
       set -e
 
       echo "cp -r . $out"
+    '';
+    installPhase = ''
       cp -r . $out
     '';
   }
