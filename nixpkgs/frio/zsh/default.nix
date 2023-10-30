@@ -27,6 +27,7 @@ let
           alias ls="${ls}/bin/ls --color=auto -F"
           alias la="ls -lAh --group-directories-first"
           alias lsa="ls -lh --group-directories-first"
+          alias l="la"
         '';
       initExtraFirst = ''
           ${(builtins.readFile ./first-zshrc.sh)}
