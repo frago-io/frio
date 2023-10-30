@@ -26,7 +26,7 @@ let
               plugin = tmuxPlugins.cpu;
               extraConfig = ''
                 %if '#{==:#{TMUX_SHOW_BATTERY},}'
-                 VALUE='#[fg=colour237,bg=colour234] #{cpu_percentage} #{sysstat_mem} #[fg=colour233,bg=colour238,bold]#{temp_cpu} #[fg=colour233,bg=colour245,bold] %d/%m %H:%M:%S '
+-                VALUE='#[fg=colour237,bg=colour234] #{cpu_percentage} #{sysstat_mem} #[fg=colour233,bg=colour238,bold] %d/%m #[fg=colour233,bg=colour245,bold] %H:%M:%S '
                  %else
                  VALUE='#[fg=colour237,bg=colour234] #{cpu_percentage} #{sysstat_mem} #[fg=colour233,bg=colour238,bold]#{temp_cpu} #{battery_color_charge_fg}#[bg=colour241,bold] #{battery_percentage} #[fg=colour233,bg=colour245,bold] %d/%m %H:%M:%S '
                  %endif
