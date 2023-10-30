@@ -9,6 +9,7 @@ let
   tmux = import ./frio/tmux common;
   userInfo = import ./frio/_user.info.nix;
   hlsp= import ./frio/haskell/lsp/default.nix;
+  smctemp= import ./frio/smctemp/default.nix;
   comma = (import (pkgs.fetchFromGitHub {
     owner = "nix-community";
     repo = "comma";
@@ -28,8 +29,11 @@ in  {
       #pkgs.binutils
       #pkgs.glibc
       pkgs.neovide
+      pkgs.lm_sensors
+
   ] else [
       #WARNING: neve ever ever ever try to install macvim, please don't
+      smctemp
   ]
     ) ++ [
     # custom packages
