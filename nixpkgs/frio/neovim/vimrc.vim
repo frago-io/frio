@@ -249,4 +249,8 @@ augroup END
 
 augroup Neovide
     set guifont=MesloLGS\ Nerd\ Font:h14.5
+    if exists("g:neovide")
+        " you can use this as well if you want
+        set mousescroll =ver:3,hor:0
+    endif
 augroup END
