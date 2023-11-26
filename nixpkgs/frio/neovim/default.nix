@@ -161,6 +161,16 @@ with rec { };
         sha256="sha256-Rr2tzuEr06M9ZbvQbC07qcxkyjFJFYdABwRpYelKBFI=";
       };
     };
+    catppuccin = pkgs.vimUtils.buildVimPlugin {
+      name = "catppuccin";
+      src = pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo="nvim";
+        rev="1826765";
+        sha256="sha256-MabkdXOGywW7OvcgPqyz09HSlNpJ5ZPeGJ8YiC63zD4=";
+      };
+    };
+
     ##NOTE: This is not th original repo, switch back to `monkoose` after
     ## https://github.com/monkoose/fzf-hoogle.vim/issues/9 is closed
     #fzf-hoogle-vim = pkgs.vimUtils.buildVimPlugin {
@@ -218,6 +228,7 @@ with rec { };
           ''
         ;
         }
+        catppuccin
         # TODO: ***********************************************************
         #glance-nvim # this requires nvim lsp, when we will switch from COC
                     # to nvim lsp we will use this

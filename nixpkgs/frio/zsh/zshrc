@@ -35,6 +35,10 @@ alias rock="ssh rock@rock"
 alias pi="ssh pi@pi"
 alias apopos="ssh apophis@popos"
 alias bcat='bat --paging=never'
+alias status='git status'
+#alias for git commit an passing all arguments to it
+alias commit='git commit $@'
+alias add='git add $@'
 
 # Alias nix to nix -L to show --print-build-logs and --verbose
 alias nix='nix -L'
