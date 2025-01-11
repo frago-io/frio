@@ -21,7 +21,7 @@ let
 in  {
   home.packages = (
     if !isDarwin then [
-      #pkgs.nmon
+      ##pkgs.nmon
 
       #building
       #pkgs.glibcLocales
@@ -43,7 +43,7 @@ in  {
     pkgs.qemu
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
     #hlsp
-    my-python
+    #my-python
 
     # UNIX UTILS  ***************************************************
     pkgs.git
@@ -83,6 +83,7 @@ in  {
     # JAVASCRIPT ****************************************************
     #pkgs.nodejs
     #pkgs.yarn
+    pkgs.bun
 
     # LANG UTILS ****************************************************
     pkgs.ctags
@@ -100,7 +101,8 @@ in  {
     pkgs.ranger
 
     # NIX  **********************************************************
-    pkgs.rnix-lsp
+    # temporary disabled
+    # pkgs.rnix-lsp
 
     # HASKELL *******************************************************
     #pkgs.cabal-install
