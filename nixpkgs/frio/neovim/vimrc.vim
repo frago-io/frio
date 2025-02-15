@@ -16,6 +16,8 @@ augroup Javascript
     au BufLeave *.js set colorcolumn=0
 
     au Bufenter *.js nnoremap <leader>ic i//<esc>78a-<esc>a<CR><CR><esc>78a-<esc>ka<space>
+    au Bufenter *.ts nnoremap <leader>ic i//<esc>78a-<esc>a<CR><CR><esc>78a-<esc>ka<space>
+    au Bufenter *.tsx nnoremap <leader>ic i//<esc>78a-<esc>a<CR><CR><esc>78a-<esc>ka<space>
 augroup END
 
 augroup Haskell
@@ -252,5 +254,8 @@ augroup Neovide
     if exists("g:neovide")
         " you can use this as well if you want
         set mousescroll =ver:3,hor:0
+        nnoremap <D-=> :let g:neovide_scale_factor += 0.1<CR>
+        nnoremap <D--> :let g:neovide_scale_factor -= 0.1<CR>
+        nnoremap <D-0> :let g:neovide_scale_factor = 1.0<CR>
     endif
 augroup END

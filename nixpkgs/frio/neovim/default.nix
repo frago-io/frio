@@ -6,6 +6,33 @@
 #sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 with rec { };
   let
+    doom-one = pkgs.vimUtils.buildVimPlugin {
+      name = "doom-one.vim";
+      src = pkgs.fetchFromGitHub {
+        owner = "romgrk";
+        repo="doom-one.vim";
+        rev="31cf41fdf753b1d99d3ec1d50d44f42af8f1c2c8";
+        sha256="sha256-MID7OBOkgE0mJmfU4mGhKwNhynip5Yzp09FTX/Jja9A=";
+      };
+    };
+    discord-vimsence = pkgs.vimUtils.buildVimPlugin {
+      name = "vimsence";
+      src = pkgs.fetchFromGitHub {
+        owner = "vimsence";
+        repo="vimsence";
+        rev="79f43e9da378f66e7c7eb1c6193de8a805d8afe3";
+        sha256="sha256-hkSDNbvC49WAcPxHvniZNT5MfNJLO3Y+fCMUTM7OrXo=";
+      };
+    };
+    discord-presence-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "presence.nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "andweeb";
+        repo="presence.nvim";
+        rev="87c857a56b7703f976d3a5ef15967d80508df6e6";
+        sha256="sha256-ZpsunLsn//zYgUtmAm5FqKVueVd/Pa1r55ZDqxCimBk=";
+      };
+    };
     dockerfile-vim = pkgs.vimUtils.buildVimPlugin {
       name = "dockerfile-vim";
 
@@ -27,6 +54,7 @@ with rec { };
         sha256="sha256-79cGIbnSv23Rv1kRFMHxHI5+dRuoOE+o0AJJluZz85s=";
       };
     };
+
     paredit-vim = pkgs.vimUtils.buildVimPlugin {
       name = "paredit";
 
@@ -197,7 +225,7 @@ with rec { };
 
         # COLORS ********************************************************
         ayu-vim
-        nordic
+        #nordic
         { plugin = vim-colorschemes
         ; config = ''
             "WARNING: don't forget to comment one-dark if you use this
@@ -219,6 +247,7 @@ with rec { };
         vim-material-monokai
         cake16
         vim-misc
+        doom-one
 
         { plugin = vim-colorscheme-switcher
         ; config = ''
@@ -228,7 +257,7 @@ with rec { };
           ''
         ;
         }
-        catppuccin
+        #catppuccin
         # TODO: ***********************************************************
         #glance-nvim # this requires nvim lsp, when we will switch from COC
                     # to nvim lsp we will use this
@@ -239,7 +268,7 @@ with rec { };
         ;
         }
 
-        coc-eslint
+        #coc-eslint
         coc-json
         ## These should be installed with :CocInstall
         #
@@ -284,7 +313,8 @@ with rec { };
         }
 
         vim-nerdtree-syntax-highlight            # This is intended to be used with vim-devicons
-                                                 # to add color to icons or entire labels
+
+        /*# to add color to icons or entire labels
 
         { plugin = fzf-vim
         ; config = ''
@@ -301,8 +331,18 @@ with rec { };
         { plugin = fzf-preview
         ; config = '' ${(builtins.readFile ./fzf-preview.rc.vim)} ''
         ;
+        }*/
+        {
+          plugin = pkgs.vimPlugins.telescope-nvim;
+          config = ''
+            lua << EOF
+            ${(builtins.readFile ./telescope-config.lua)}
+            EOF
+          '';
         }
 
+
+        /*
         { plugin = telescope-nvim
         ; config = ''
             " Find files using Telescope command-line sugar.
@@ -312,7 +352,7 @@ with rec { };
             nnoremap <leader>fh <cmd>Telescope help_tags<cr>
           ''
         ;
-        }
+        }*/
         { plugin = nerdtree
         ; config = ''
             nnoremap ,m :NERDTreeToggle<cr>
@@ -441,7 +481,15 @@ with rec { };
         ; config = '' ${(builtins.readFile ./ale.rc.vim)} ''
         ;
         }
-
+        #  LEAN  ********************************************
+        {
+          plugin = lean-nvim;
+          config = ''
+            lua << EOF
+            require('lean').setup{ mappings = true }
+            EOF
+          '';
+        }
 
         # TEXT MANIPULATION  ********************************************
         nerdcommenter
@@ -485,6 +533,19 @@ with rec { };
         # OTHERS ********************************************************
         dockerfile-vim
         vim-nix
+        #discord-presence-nvim
+        #{ plugin = discord-vimsence
+        #; config = ''
+          #let g:vimsence_small_text = 'NeoVim'
+          #let g:vimsence_small_image = 'neovim'
+          #let g:vimsence_editing_details = 'Editing: not-your-business'
+          #let g:vimsence_editing_state = 'Working on: not-your-business'
+          #let g:vimsence_file_explorer_text = 'In NERDTree'
+          #let g:vimsence_file_explorer_details = 'Looking for files'
+          #"let g:vimsence_custom_icons = {'filetype': 'haskell'}
+          #''
+        #;
+        #}
 
         # GIT & DIFF ****************************************************
         vim-fugitive

@@ -40,6 +40,8 @@ in  {
     comma
 
     #
+    pkgs.ripgrep
+    pkgs.lean4
     pkgs.qemu
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
     #hlsp

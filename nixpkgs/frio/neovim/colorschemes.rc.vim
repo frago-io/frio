@@ -24,7 +24,9 @@
 "
 "colorscheme gruvbox
 set termguicolors
-colorscheme nord
+"colorscheme nord
+colorscheme doom-one
+"colorscheme onedark
 "colorscheme catppuccin-frappe
 "colorscheme nordic " this is nice, you should try it from time to time
 

@@ -6,7 +6,8 @@ let
     in {
       enable = true;
       autocd = true;
-      enableAutosuggestions = true;
+      #enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       zplug = {
         enable = false; 
