@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+
 tarball=/tmp/frio.tar.gz
 
 rm -rf $tarball && wget -O $tarball https://github.com/frago-io/frio/tarball/main
