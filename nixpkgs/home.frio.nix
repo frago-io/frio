@@ -8,8 +8,8 @@ let
   zsh = import ./frio/zsh common;
   tmux = import ./frio/tmux common;
   userInfo = import ./frio/_user.info.nix;
-  hlsp= import ./frio/haskell/lsp/default.nix;
-  smctemp= import ./frio/smctemp/default.nix;
+  hlsp = import ./frio/haskell/lsp/default.nix;
+  smctemp = import ./frio/smctemp/default.nix;
   comma = (import (pkgs.fetchFromGitHub {
     owner = "nix-community";
     repo = "comma";
@@ -18,7 +18,8 @@ let
   })).default;
   my-python = import ./frio/python.nix (common // { isDarwin = isDarwin; });
 
-in  {
+in
+{
   home.packages = (
     if !isDarwin then [
       ##pkgs.nmon
@@ -31,17 +32,18 @@ in  {
       pkgs.neovide
       pkgs.lm_sensors
 
-  ] else [
+    ] else [
       #WARNING: neve ever ever ever try to install macvim, please don't
       smctemp
-  ]
-    ) ++ [
+    ]
+  ) ++ [
     # custom packages
     comma
 
     #
     pkgs.ripgrep
-    pkgs.lean4
+    pkgs.rustup
+    #pkgs.lean4
     pkgs.qemu
     #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
     #hlsp
@@ -50,7 +52,7 @@ in  {
     # UNIX UTILS  ***************************************************
     pkgs.git
     pkgs.git-lfs
-    pkgs.jq                                  # json command processor
+    pkgs.jq # json command processor
     pkgs.perl
     pkgs.asciinema
     pkgs.tmate
@@ -125,20 +127,20 @@ in  {
   programs.bat = {
     enable = true;
     config = {
-      theme="1337";
-      style="numbers,changes,header";
-      italic-text="always";
-      map-syntax="*.ino:C++";
+      theme = "1337";
+      style = "numbers,changes,header";
+      italic-text = "always";
+      map-syntax = "*.ino:C++";
     };
   };
 
   programs.fzf = {
     enable = true;
     defaultOptions = [
-       "--color=fg:#cbccc6,bg:#1f2430,hl:#707a8c"
-       "--color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66"
-       "--color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6"
-       "--color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff"
+      "--color=fg:#cbccc6,bg:#1f2430,hl:#707a8c"
+      "--color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66"
+      "--color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6"
+      "--color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff"
     ];
   };
 
