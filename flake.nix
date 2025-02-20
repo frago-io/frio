@@ -14,8 +14,12 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      homeConfigurations."bogdan" = home-manager.lib.homeManagerConfiguration {
+      user = import ./_user.info.nix;
+    in
+    {
+      # homeConfigurations."user" = home-manager.lib.homeManagerConfiguration { ...
+      # replace "user" with user.username
+      homeConfigurations."${user.username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,

@@ -27,7 +27,7 @@ testLink() {
         #echo "$file exists on your filesystem."
         smLink=$(sameLink $1 $2)
         #echo $smLink
-        if [[ $smLink != 1 ]]; then 
+        if [[ $smLink != 1 ]]; then
             echoError "$1 already exists but does not point to $2"
             exit 1
         fi
@@ -53,7 +53,7 @@ ensureLink() {
         #echo "rm -rf $1"
         #echo "$file not exists on your filesystem."
         echo "ln -s $2 $1 "
-        ln -s $2 $1 
+        ln -s $2 $1
         echoOK "$1 linked to $2"
     fi
     if [[ $? -ne 0 ]]; then
@@ -65,9 +65,19 @@ ensureLink() {
 testLink $nixpkgs/frio $nixhere/frio
 testLink $nixpkgs/home.nix $nixhere/home.frio.nix
 testLink $homemanager/home.nix $nixhere/home.frio.nix
-testLink $nvim/coc-settings.json $nixhere/frio/neovim/coc-settings.json
+#testLink $nvim/coc-settings.json $nixhere/frio/neovim/coc-settings.json
+#testLink $homemanager/flake.nix $nixhere/../flake.nix
+#testLink $homemanager/flake.lock $nixhere/../flake.lock
+#testLink $homemanager/_user.info.nix $nixhere/frio/_user.info.nix
 
 ensureLink $nixpkgs/frio $nixhere/frio
 ensureLink $nixpkgs/home.nix $nixhere/home.frio.nix
 ensureLink $homemanager/home.nix $nixhere/home.frio.nix
-ensureLink $nvim/coc-settings.json $nixhere/frio/neovim/coc-settings.json
+#ensureLink $nvim/coc-settings.json $nixhere/frio/neovim/coc-settings.json
+#testLink $homemanager/flake.nix $nixhere/../flake.nix
+#testLink $homemanager/flake.lock $nixhere/../flake.lock
+#testLink $homemanager/_user.info.nix $nixhere/frio/_user.info.nix
+
+#cp -f $nixhere/../flake.nix $homemanager/flake.nix
+#cp -f $nixhere/../flake.lock $homemanager/flake.lock
+#cp -f $nixhere/frio/_user.info.nix $homemanager/_user.info.nix
