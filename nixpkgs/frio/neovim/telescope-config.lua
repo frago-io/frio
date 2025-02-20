@@ -17,7 +17,7 @@ telescope.setup({
 })
 
 -- Define mappings (same style as your fzf-preview setup)
-vim.keymap.set("n", "<Leader>fp", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { noremap = true, silent = true })
+-- vim.keymap.set("n", "<Leader>fp", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>fgs", builtin.git_status, { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>fga", builtin.git_commits, { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>fb", builtin.buffers, { noremap = true, silent = true })
@@ -33,7 +33,8 @@ vim.keymap.set("n", "<Leader>fq", builtin.quickfix, { noremap = true, silent = t
 vim.keymap.set("n", "<Leader>fl", builtin.loclist, { noremap = true, silent = true })
 
 -- <C-p> should find **all** files (ignoring .gitignore)
-vim.keymap.set("n", "<C-p>", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { noremap = true, silent = true })
+-- vim.keymap.set("n", "<C-p>", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { noremap = true, silent = true })
+vim.keymap.set('n', '<C-p>', ':Telescope git_files<CR>', { noremap = true, silent = true })
 -- Buffers (like `:Buffers`)
 vim.keymap.set("n", "<C-b>", builtin.buffers, { noremap = true, silent = true })
 
