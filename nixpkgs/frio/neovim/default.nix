@@ -6,14 +6,14 @@
 #sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 with rec { };
 let
-  mason-lspconfig = pkgs.vimUtils.buildNeovimPlugin {
-    name = "mason-lspconfig.nvim";
-    version = "1.32.0";
+  live-share = pkgs.vimUtils.buildVimPlugin {
+    name = "live-share.nvim";
+    version = "1.0.0";
     src = pkgs.fetchFromGitHub {
-      owner = "williamboman";
-      repo = "mason-lspconfig.nvim";
-      rev = "1a31f824b9cd5bc6f342fc29e9a53b60d74af245";
-      sha256 = "sha256-+Rji3UH32QQZADqQhMcJpgmkwbDumKaBlZO6cqNvUGY=";
+      owner = "azratul";
+      repo = "live-share.nvim";
+      rev = "bf5e8e087c368aae0325a09d1ea43f2a08f5e9aa";
+      sha256 = "sha256-fUYFdeP+T+KwGpvm0eh5GcAS35ZU5f0N9A/JsqBgHGA=";
     };
   };
   doom-one = pkgs.vimUtils.buildVimPlugin {
@@ -653,7 +653,31 @@ in
     cmp-path
     cmp-cmdline
     luasnip
-
+    #live-share-nvim
+    {
+      plugin = instant-nvim
+      ;
+      config = ''
+        lua << EOF
+            require("live-share").setup({})
+            vim.g.instant_username = "horus"
+        EOF
+      '';
+    }
+    {
+      plugin = live-share
+      ;
+      config = ''
+        lua << EOF
+            require("live-share").setup({
+              port_internal = 9876, -- The local port to be used for the live share connection
+              max_attempts = 20, -- Maximum number of attempts to read the URL from service(serveo.net or localhost.run), every 250 ms
+              service_url = "/tmp/service.url", -- Path to the file where the URL from serveo.net will be stored
+              service = "nokey@localhost.run", -- Service to use, options are serveo.net or localhost.run
+            })
+        EOF
+      '';
+    }
   ];
   extraConfig = ''
     ${(builtins.readFile ./vimrc.vim)}
