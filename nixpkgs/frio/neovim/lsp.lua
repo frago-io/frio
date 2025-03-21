@@ -3,7 +3,14 @@ require("mason").setup()
 local lspconfig = require("lspconfig")
 
 -- Enable LSP for each language
-lspconfig.hls.setup({})  -- Haskell LSP
+-- lspconfig.hls.setup({})  -- Haskell LSP
+lspconfig.hls.setup({
+  settings = {
+    haskell = {
+      formattingProvider = "fourmolu",
+    },
+  },
+})
 lspconfig.ts_ls.setup({})  -- TypeScript/JavaScript
 lspconfig.yamlls.setup({})  -- YAML LSP
 lspconfig.rnix.setup({})  -- Nix LSP

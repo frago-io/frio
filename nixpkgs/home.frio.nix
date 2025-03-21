@@ -164,6 +164,10 @@ in
   #home.homeDirectory = "/home/apophis";
   home.username = userInfo.username;
   home.homeDirectory = userInfo.homeDirectory;
+  home.sessionVariables = {
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
