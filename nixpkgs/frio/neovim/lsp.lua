@@ -2,15 +2,62 @@ require("mason").setup()
 
 local lspconfig = require("lspconfig")
 
--- Enable LSP for each language
--- lspconfig.hls.setup({})  -- Haskell LSP
-lspconfig.hls.setup({
+-- Global default configuration
+local default_hls_config = {
   settings = {
     haskell = {
       formattingProvider = "fourmolu",
     },
   },
-})
+  cmd = { "haskell-language-server-wrapper", "--lsp" },
+}
+
+-- Function to find and load project-specific config
+local function get_project_config()
+  local project_config_file = vim.fn.getcwd() .. "/.vim/haskell-lsp.lua"
+  if vim.fn.filereadable(project_config_file) == 1 then
+    local config = dofile(project_config_file)
+    return config
+  end
+  return nil
+end
+
+-- Combine default with project-specific config
+local function setup_hls()
+  local config = vim.deepcopy(default_hls_config)
+  local project_config = get_project_config()
+
+  if project_config then
+    -- Merge project config with default config
+    for k, v in pairs(project_config) do
+      if type(v) == "table" and type(config[k]) == "table" then
+        config[k] = vim.tbl_deep_extend("force", config[k], v)
+      else
+        config[k] = v
+      end
+    end
+  end
+
+  require("lspconfig").hls.setup(config)
+end
+
+-- Call the setup function
+setup_hls()
+
+-- Example project-specific config in `~/.vim/haskell-lsp.lua`
+-- return {
+--   cmd = { "haskell-language-server", "--lsp" },
+--   -- Any other project-specific settings
+--   settings = {
+--     haskell = {
+--       -- Override or add settings as needed
+--       -- These will be merged with the defaults
+--     },
+--   },
+-- }
+
+
+
 lspconfig.ts_ls.setup({})  -- TypeScript/JavaScript
 lspconfig.yamlls.setup({})  -- YAML LSP
 lspconfig.rnix.setup({})  -- Nix LSP

@@ -664,6 +664,14 @@ in
         EOF
       '';
     }
+    /*
+      {
+      plugin = avante-nvim;
+      type = "lua";
+      config = builtins.readFile ./avante.lua;
+      #config = ''require("avante").setup()''; # or builtins.readFile ./plugins/avante.lua;
+      }
+    */
     {
       plugin = live-share
       ;
