@@ -686,9 +686,88 @@ in
         EOF
       '';
     }
+
+    {
+      plugin = nvim-treesitter
+      ;
+      config = ''
+          lua << EOF
+        local parser_install_dir = vim.fn.stdpath("data") .. "/treesitter-parsers"
+
+        -- Ensure the directory exists
+        vim.fn.mkdir(parser_install_dir, "p")
+
+        -- Set the custom parser directory
+        vim.opt.runtimepath:append(parser_install_dir)
+        require('nvim-treesitter.configs').setup {
+          ensure_installed = { "haskell" ,"bash", "c", "css", "html", "javascript", "json", "lua", "python", "typescript", "yaml", "markdown", "markdown_inline" },
+          highlight = { enable = true },
+          parser_install_dir = parser_install_dir,
+        }
+
+        -- Enable markdown fenced code block highlighting
+        vim.g.markdown_fenced_languages = {
+          "javascript",
+          "js=javascript",
+          "python",
+          "html",
+          "css",
+          "bash",
+          "lua",
+           "haskell"
+        }
+        EOF
+      '';
+    }
+    plenary-nvim
+    nui-nvim
+    {
+      plugin = render-markdown-nvim
+      ;
+      config = ''
+        lua << EOF
+            require("render-markdown").setup({ file_types = { "markdown", "Avante" } })
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "Avante",
+                callback = function()
+                  vim.bo.filetype = "markdown"
+                end,
+            })
+        EOF
+      '';
+    }
+    {
+      plugin = avante-nvim;
+      type = "lua";
+      config = ''require("avante").setup(
+                {
+                    --- ... existing configurations
+                    provider = 'groq', -- In this example, use Claude for planning, but you can also use any provider you want.
+                    cursor_applying_provider = 'groq', -- In this example, use Groq for applying, but you can also use any provider you want.
+                    behaviour = {
+                        --- ... existing behaviours
+                        enable_cursor_planning_mode = true, -- enable cursor planning mode!
+                    },
+                    vendors = {
+                        --- ... existing vendors
+                        groq = { -- define groq provider
+                            __inherited_from = 'openai',
+                            api_key_name = 'GROQ_API_KEY',
+                            endpoint = 'https://api.groq.com/openai/v1/',
+                            model = 'llama-3.3-70b-versatile',
+                            max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
+                        },
+                    },
+                    --- ... existing configurations
+                }
+
+          )''; # or builtins.readFile ./plugins/avante.lua;
+    }
   ];
-  extraConfig = ''
-    ${(builtins.readFile ./vimrc.vim)}
-  '';
+  #extraConfig = ''
+  #${(builtins.readFile ./vimrc.vim)}
+  #'';
+  # Use the lua config instead of vimrc
+  extraLuaConfig = builtins.readFile ./init.lua;
 
 }
