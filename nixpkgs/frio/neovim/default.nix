@@ -573,20 +573,6 @@ in
 
     # OTHERS ********************************************************
     dockerfile-vim
-    #vim-nix
-    #discord-presence-nvim
-    #{ plugin = discord-vimsence
-    #; config = ''
-    #let g:vimsence_small_text = 'NeoVim'
-    #let g:vimsence_small_image = 'neovim'
-    #let g:vimsence_editing_details = 'Editing: not-your-business'
-    #let g:vimsence_editing_state = 'Working on: not-your-business'
-    #let g:vimsence_file_explorer_text = 'In NERDTree'
-    #let g:vimsence_file_explorer_details = 'Looking for files'
-    #"let g:vimsence_custom_icons = {'filetype': 'haskell'}
-    #''
-    #;
-    #}
 
     # GIT & DIFF ****************************************************
     vim-fugitive
@@ -612,11 +598,17 @@ in
     nerdtree-git-plugin
     gundo-vim
     vim-rest-console
-    vim-notify
+    #vim-notify
+    nvim-notify
 
 
     # LSP ****************************************************
     nvim-lspconfig # Main LSP support
+    # {
+    #   plugin = lsp_lines-nvim;
+    #   type = "lua";
+    #   config = ''require("lsp_lines").setup()'';
+    # }
     {
       plugin = mason-nvim # Optional: Auto-installs LSP servers
       ;
@@ -648,76 +640,14 @@ in
         EOF
       '';
     }
-
     cmp-buffer
     cmp-path
     cmp-cmdline
     luasnip
-    #live-share-nvim
     {
-      plugin = instant-nvim
-      ;
-      config = ''
-        lua << EOF
-            require("live-share").setup({})
-            vim.g.instant_username = "horus"
-        EOF
-      '';
-    }
-    /*
-      {
-      plugin = avante-nvim;
+      plugin = nvim-treesitter;
       type = "lua";
-      config = builtins.readFile ./avante.lua;
-      #config = ''require("avante").setup()''; # or builtins.readFile ./plugins/avante.lua;
-      }
-    */
-    {
-      plugin = live-share
-      ;
-      config = ''
-        lua << EOF
-            require("live-share").setup({
-              port_internal = 9876, -- The local port to be used for the live share connection
-              max_attempts = 20, -- Maximum number of attempts to read the URL from service(serveo.net or localhost.run), every 250 ms
-              service_url = "/tmp/service.url", -- Path to the file where the URL from serveo.net will be stored
-              service = "nokey@localhost.run", -- Service to use, options are serveo.net or localhost.run
-            })
-        EOF
-      '';
-    }
-
-    {
-      plugin = nvim-treesitter
-      ;
-      config = ''
-          lua << EOF
-        local parser_install_dir = vim.fn.stdpath("data") .. "/treesitter-parsers"
-
-        -- Ensure the directory exists
-        vim.fn.mkdir(parser_install_dir, "p")
-
-        -- Set the custom parser directory
-        vim.opt.runtimepath:append(parser_install_dir)
-        require('nvim-treesitter.configs').setup {
-          ensure_installed = { "haskell" ,"bash", "c", "css", "html", "javascript", "json", "lua", "python", "typescript", "yaml", "markdown", "markdown_inline" },
-          highlight = { enable = true },
-          parser_install_dir = parser_install_dir,
-        }
-
-        -- Enable markdown fenced code block highlighting
-        vim.g.markdown_fenced_languages = {
-          "javascript",
-          "js=javascript",
-          "python",
-          "html",
-          "css",
-          "bash",
-          "lua",
-           "haskell"
-        }
-        EOF
-      '';
+      config = builtins.readFile ./nvim-treesitter.lua;
     }
     plenary-nvim
     nui-nvim
@@ -739,30 +669,14 @@ in
     {
       plugin = avante-nvim;
       type = "lua";
-      config = ''require("avante").setup(
-                {
-                    --- ... existing configurations
-                    provider = 'groq', -- In this example, use Claude for planning, but you can also use any provider you want.
-                    cursor_applying_provider = 'groq', -- In this example, use Groq for applying, but you can also use any provider you want.
-                    behaviour = {
-                        --- ... existing behaviours
-                        enable_cursor_planning_mode = true, -- enable cursor planning mode!
-                    },
-                    vendors = {
-                        --- ... existing vendors
-                        groq = { -- define groq provider
-                            __inherited_from = 'openai',
-                            api_key_name = 'GROQ_API_KEY',
-                            endpoint = 'https://api.groq.com/openai/v1/',
-                            model = 'llama-3.3-70b-versatile',
-                            max_completion_tokens = 32768, -- remember to increase this value, otherwise it will stop generating halfway
-                        },
-                    },
-                    --- ... existing configurations
-                }
-
-          )''; # or builtins.readFile ./plugins/avante.lua;
+      config = builtins.readFile ./avante.lua;
     }
+    {
+      plugin = noice-nvim;
+      type = "lua";
+      config = builtins.readFile ./noice.lua;
+    }
+
   ];
   #extraConfig = ''
   #${(builtins.readFile ./vimrc.vim)}

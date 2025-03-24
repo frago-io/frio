@@ -296,3 +296,20 @@ if vim.g.neovide then
   vim.keymap.set("n", "<D-->", ":let g:neovide_scale_factor -= 0.1<CR>")
   vim.keymap.set("n", "<D-0>", ":let g:neovide_scale_factor = 1.0<CR>")
 end
+
+-- Signs for errors
+vim.fn.sign_define("DiagnosticSignError", { text = "◉", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "◉", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "ℹ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "💡", texthl = "DiagnosticSignHint" })
+
+vim.cmd("highlight DiagnosticSignError guifg=#F60067 gui=bold")
+vim.diagnostic.config({
+  signs = {
+    priority = 100,  -- Increase priority (default is usually lower)
+  },
+})
+vim.opt.signcolumn = "yes:2"
+
+
+
