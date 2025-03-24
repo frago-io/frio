@@ -8,6 +8,12 @@ require("avante").setup(
         --- ... existing behaviours
         enable_cursor_planning_mode = true, -- enable cursor planning mode!
     },
+    windows = {
+        width = 43,
+        ask = {
+            floating = true,
+        },
+    },
     vendors = {
         --- ... existing vendors
         groq = { -- define groq provider

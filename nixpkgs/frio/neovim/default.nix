@@ -190,15 +190,6 @@ let
       sha256 = "sha256-Y/mabXsZd9NF0550rU9lY2208/o6LENTQpcSb4MnUuU=";
     };
   };
-  vim-notify = pkgs.vimUtils.buildVimPlugin {
-    name = "nvim-notify";
-    src = pkgs.fetchFromGitHub {
-      owner = "rcarriga";
-      repo = "nvim-notify";
-      rev = "ea9c8ce";
-      sha256 = "sha256-Rr2tzuEr06M9ZbvQbC07qcxkyjFJFYdABwRpYelKBFI=";
-    };
-  };
   catppuccin = pkgs.vimUtils.buildVimPlugin {
     name = "catppuccin";
     src = pkgs.fetchFromGitHub {
@@ -598,8 +589,15 @@ in
     nerdtree-git-plugin
     gundo-vim
     vim-rest-console
-    #vim-notify
-    nvim-notify
+    {
+      plugin = nvim-notify
+      ;
+      config = ''
+        lua << EOF
+         require('notify').setup({ stages = 'fade', timeout = 500 })
+        EOF
+      '';
+    }
 
 
     # LSP ****************************************************
