@@ -149,7 +149,7 @@ vim.keymap.set("n", "S", "<NOP>")
 vim.keymap.set("n", "SS", ":w<cr>")
 vim.keymap.set("n", "<C-Tab>", "<C-w><C-w>")
 vim.keymap.set("n", "<A-/>", ":let @/ = \"\"<cr>")
-vim.keymap.set("n", "÷", ":let @/ = \"\"<cr>")
+vim.keymap.set("n", "÷", ":let @/ = \"\"<cr>:lua require(\"notify\").dismiss()<cr>")
 vim.keymap.set("n", "<C-J>", "mao<Esc>`a")
 vim.keymap.set("n", "<C-K>", "maO<Esc>`a")
 vim.keymap.set("n", "<space>", "i<space><esc>l")
@@ -260,7 +260,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.softtabstop = 2
   end
 })
-
 -- JavaScript filetype settings
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "javascript", "vue", "typescript", "typescriptreact" },

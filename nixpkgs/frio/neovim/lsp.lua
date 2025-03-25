@@ -108,4 +108,5 @@ local current_diagnostic_pos = nil
 
 
 vim.keymap.set("n", "gce", vim.lsp.codelens.run, { noremap = true, silent = true, desc = "Run CodeLens" })
+vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "Code Actions" })
 

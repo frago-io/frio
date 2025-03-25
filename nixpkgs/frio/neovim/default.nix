@@ -412,7 +412,6 @@ in
     #Use it with --lang=en-us otherwise is not working
     #Maybe we should create a shortcut
 
-
     {
       plugin = vim-grammarous
       ;
@@ -681,5 +680,4 @@ in
   #'';
   # Use the lua config instead of vimrc
   extraLuaConfig = builtins.readFile ./init.lua;
-
 }
