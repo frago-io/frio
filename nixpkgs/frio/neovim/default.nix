@@ -591,13 +591,9 @@ in
     {
       plugin = nvim-notify
       ;
-      config = ''
-        lua << EOF
-         require('notify').setup({ stages = 'fade', timeout = 500 })
-        EOF
-      '';
+      type = "lua";
+      config = builtins.readFile ./nvim-notify.lua;
     }
-
 
     # LSP ****************************************************
     nvim-lspconfig # Main LSP support
