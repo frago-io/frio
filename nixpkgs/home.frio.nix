@@ -87,7 +87,7 @@ in
     # JAVASCRIPT ****************************************************
     #pkgs.nodejs
     #pkgs.yarn
-    pkgs.bun
+    #pkgs.bun
 
     # LANG UTILS ****************************************************
     pkgs.ctags

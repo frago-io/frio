@@ -3,10 +3,19 @@ local builtin = require("telescope.builtin")
 
 telescope.setup({
     defaults = {
+        --path_display = function(_, path)
+            --local max_length = 55  -- Adjust as needed
+            --if #path > max_length then
+                --local half = math.floor((max_length - 3) / 2)
+                --return path:sub(1, half) .. "..." .. path:sub(-half)
+            --end
+            --return path
+        --end,
+        layout_strategy = "vertical",
         prompt_prefix = "🔍 ",
         selection_caret = "➜ ",
         winblend = 5,
-        layout_config = { preview_width = 0.5 },
+        --layout_config = { preview_width = 0.5 },
     },
     pickers = {
         find_files = { hidden = true, no_ignore = true, follow = true },
