@@ -1,3 +1,13 @@
+"augroup TransparentBackground
+    "autocmd!
+    "autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
+    "autocmd ColorScheme * highlight NormalNC guibg=NONE ctermbg=NONE
+    "autocmd ColorScheme * highlight NormalFloat guibg=NONE ctermbg=NONE
+    "autocmd ColorScheme * highlight FloatBorder guibg=NONE ctermbg=NONE
+    "autocmd ColorScheme * highlight SignColumn guibg=NONE ctermbg=NONE
+    "autocmd ColorScheme * highlight LineNr guibg=NONE ctermbg=NONE
+    "autocmd ColorScheme * highlight CursorLineNr guibg=NONE ctermbg=NONE
+"augroup END
 " -end-- DEFAULTS ---
 "colorscheme apprentice
 "colorscheme cabin

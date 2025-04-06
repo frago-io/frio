@@ -86,7 +86,7 @@ vim.opt.history = 1000
 vim.opt.wildignore:append({ "*\\tmp\\*", "*.swp", "*.swo", "*.zip", ".git", ".cabal-sandbox" })
 vim.opt.wildmode = "longest,list,full"
 vim.opt.wildmenu = true
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
 vim.opt.ruler = true
 
 -- Moving lines keymaps
@@ -149,7 +149,8 @@ vim.keymap.set("n", "S", "<NOP>")
 vim.keymap.set("n", "SS", ":w<cr>")
 vim.keymap.set("n", "<C-Tab>", "<C-w><C-w>")
 vim.keymap.set("n", "<A-/>", ":let @/ = \"\"<cr>")
-vim.keymap.set("n", "÷", ":let @/ = \"\"<cr>:lua require(\"notify\").dismiss()<cr>")
+--vim.keymap.set("n", "÷", ":let @/ = \"\"<cr>:lua require(\"notify\").dismiss()<cr>")
+vim.keymap.set("n", "÷", ":let @/ = \"\"<cr>")
 vim.keymap.set("n", "<C-J>", "mao<Esc>`a")
 vim.keymap.set("n", "<C-K>", "maO<Esc>`a")
 vim.keymap.set("n", "<space>", "i<space><esc>l")
@@ -309,6 +310,4 @@ vim.diagnostic.config({
   },
 })
 vim.opt.signcolumn = "yes:2"
-
-
-
+--vim.api.nvim_set_keymap('n', '<Leader>q', ':cclose<CR>', { noremap = true, silent = true })

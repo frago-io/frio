@@ -588,12 +588,6 @@ in
     nerdtree-git-plugin
     gundo-vim
     vim-rest-console
-    {
-      plugin = nvim-notify
-      ;
-      type = "lua";
-      config = builtins.readFile ./nvim-notify.lua;
-    }
 
     # LSP ****************************************************
     nvim-lspconfig # Main LSP support
@@ -664,11 +658,17 @@ in
       type = "lua";
       config = builtins.readFile ./avante.lua;
     }
-    {
-      plugin = noice-nvim;
-      type = "lua";
-      config = builtins.readFile ./noice.lua;
-    }
+    #{
+    #plugin = nvim-notify
+    #;
+    #type = "lua";
+    #config = builtins.readFile ./nvim-notify.lua;
+    #}
+    #{
+    #plugin = noice-nvim;
+    #type = "lua";
+    #config = builtins.readFile ./noice.lua;
+    #}
 
   ];
   #extraConfig = ''
