@@ -62,3 +62,11 @@ vim.keymap.set("v", "<Leader>*", function()
   builtin.grep_string({ search = text })
 end, { noremap = true, silent = true })
 
+vim.api.nvim_create_user_command('Tg', function(opts)
+  require('telescope.builtin').live_grep({
+    default_text = opts.args,
+  })
+end, {
+  nargs = '*',  -- Accept zero or more arguments
+})
+
