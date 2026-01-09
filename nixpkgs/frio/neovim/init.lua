@@ -140,7 +140,11 @@ if vim.fn.has('nvim') == 0 then
 end
 
 -- Custom commands
-vim.api.nvim_create_user_command("JSONFormat", ":%!jq '.'", {})
+--vim.api.nvim_create_user_command("JSONFormat", ":%!jq '.'", {})
+vim.api.nvim_create_user_command("JSONFormat", function()
+  vim.bo.filetype = "json"
+  vim.cmd(":%!jq '.'")
+end, {})
 
 -- Generic keymappings
 vim.keymap.set("n", "<leader>/", "/\\c")

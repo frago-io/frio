@@ -1,5 +1,4 @@
 local cmp = require("cmp")
-local lspconfig = require("lspconfig")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -16,8 +15,3 @@ cmp.setup({
     { name = "path" }
   })
 })
-
--- Setup LSP servers with capabilities
--- lspconfig.your_language_server.setup({
---   capabilities = capabilities,
--- })

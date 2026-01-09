@@ -5,7 +5,7 @@ vim.fn.mkdir(parser_install_dir, "p")
 
 -- Set the custom parser directory
 vim.opt.runtimepath:append(parser_install_dir)
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter').setup {
     ensure_installed = {
             "haskell" ,"bash", "c", "css",
             "html", "javascript", "json", "lua", "python", 

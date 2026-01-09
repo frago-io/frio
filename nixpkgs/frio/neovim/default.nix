@@ -658,6 +658,11 @@ in
       type = "lua";
       config = builtins.readFile ./avante.lua;
     }
+    {
+      plugin = claude-code-nvim;
+      type = "lua";
+      config = builtins.readFile ./claude-code-nvim.lua;
+    }
     #{
     #plugin = nvim-notify
     #;

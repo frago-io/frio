@@ -119,7 +119,7 @@ in
     #pkgs.haskellPackages.stack
     pkgs.haskellPackages.hoogle
     #pkgs.haskellPackages.hlint
-    pkgs.haskellPackages.apply-refact
+    #pkgs.haskellPackages.apply-refact
     pkgs.stylish-haskell
 
   ];
