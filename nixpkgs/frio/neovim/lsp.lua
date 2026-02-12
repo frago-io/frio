@@ -78,6 +78,11 @@ vim.lsp.enable("yamlls")
 vim.lsp.config("rnix", { on_attach = codeLens })
 vim.lsp.enable("rnix")
 -- vim.lsp.config("lean", {})  -- Lean LSP
+lspconfig.ts_ls.setup({on_attach = codeLens,})  -- TypeScript/JavaScript
+lspconfig.yamlls.setup({on_attach = codeLens,})  -- YAML LSP
+lspconfig.rnix.setup({on_attach = codeLens,})  -- Nix LSP
+-- lspconfig.lean.setup({})  -- Lean LSP
+lspconfig.aiken.setup({on_attach = codeLens,})  -- Aiken LSP
 
 -- Global Mappings for LSP
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true })  -- Go to definition
@@ -103,7 +108,7 @@ vim.diagnostic.config({
 
 -- Autoformat on Save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.hs", "*.ts", "*.tsx", "*.yaml", "*.nix" },
+  pattern = { "*.hs", "*.ts", "*.tsx", "*.yaml", "*.nix", "*.ak" },
   callback = function() vim.lsp.buf.format() end,
 })
 

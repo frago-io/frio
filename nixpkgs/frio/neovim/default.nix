@@ -199,6 +199,16 @@ let
       sha256 = "sha256-MabkdXOGywW7OvcgPqyz09HSlNpJ5ZPeGJ8YiC63zD4=";
     };
   };
+  aiken-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "editor-integration-nvim";
+    pname = "editor-integration-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "aiken-lang";
+      repo = "editor-integration-nvim";
+      rev = "7f4848e49d33ebc5aa0e0b594e3e2d8b6db23379";
+      sha256 = "sha256-1JlJlNfMmn2/BIz8rzy5+VJZ2gnjmxAiIG6Q5pB/ZDY=";
+    };
+  };
 
   ##NOTE: This is not th original repo, switch back to `monkoose` after
   ## https://github.com/monkoose/fzf-hoogle.vim/issues/9 is closed
@@ -269,6 +279,7 @@ in
     # TODO: ***********************************************************
     #glance-nvim # this requires nvim lsp, when we will switch from COC
     # to nvim lsp we will use this
+    catppuccin-vim
 
     # COC ***********************************************************
     # { plugin = coc-nvim
@@ -515,6 +526,9 @@ in
         EOF
       '';
     }
+
+    # AIKEN  ********************************************
+    aiken-nvim
 
     # TEXT MANIPULATION  ********************************************
     nerdcommenter
