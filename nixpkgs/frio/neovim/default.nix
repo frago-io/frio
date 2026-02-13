@@ -413,7 +413,7 @@ in
     # SYNTAX ********************************************************
     BetterLua-vim
     jdaddy-vim
-    Tagbar
+    tagbar
     vim-prisma
     sophia-vim-syntax
     vim-solidity
