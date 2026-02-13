@@ -1,5 +1,7 @@
 require("mason").setup()
 
+local lspconfig = require("lspconfig")
+
 local function codeLens(client, bufnr)
     -- Enable code lens refreshing
     if client.server_capabilities.codeLensProvider then
@@ -47,14 +49,11 @@ local function setup_hls()
     end
   end
 
-  vim.lsp.config("hls", config)
+  require("lspconfig").hls.setup(config)
 end
 
 -- Call the setup function
 setup_hls()
-
--- Enable HLS
-vim.lsp.enable("hls")
 
 -- Example project-specific config in `~/.vim/haskell-lsp.lua`
 -- return {
@@ -68,16 +67,7 @@ vim.lsp.enable("hls")
 --   },
 -- }
 
--- Configure other language servers using the new API
-vim.lsp.config("ts_ls", { on_attach = codeLens })
-vim.lsp.enable("ts_ls")
 
-vim.lsp.config("yamlls", { on_attach = codeLens })
-vim.lsp.enable("yamlls")
-
-vim.lsp.config("rnix", { on_attach = codeLens })
-vim.lsp.enable("rnix")
--- vim.lsp.config("lean", {})  -- Lean LSP
 lspconfig.ts_ls.setup({on_attach = codeLens,})  -- TypeScript/JavaScript
 lspconfig.yamlls.setup({on_attach = codeLens,})  -- YAML LSP
 lspconfig.rnix.setup({on_attach = codeLens,})  -- Nix LSP

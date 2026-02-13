@@ -657,26 +657,20 @@ in
       ;
       config = ''
         lua << EOF
-            require("render-markdown").setup({ file_types = { "markdown", "Avante" } })
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = "Avante",
-                callback = function()
-                  vim.bo.filetype = "markdown"
-                end,
-            })
+            require("render-markdown").setup({ file_types = { "markdown" } })
         EOF
       '';
     }
-    {
-      plugin = avante-nvim;
-      type = "lua";
-      config = builtins.readFile ./avante.lua;
-    }
-    {
-      plugin = claude-code-nvim;
-      type = "lua";
-      config = builtins.readFile ./claude-code-nvim.lua;
-    }
+    #{
+    #  plugin = avante-nvim;
+    #  type = "lua";
+    #  config = builtins.readFile ./avante.lua;
+    #}
+    #{
+    #  plugin = claude-code-nvim;
+    #  type = "lua";
+    #  config = builtins.readFile ./claude-code-nvim.lua;
+    #}
     #{
     #plugin = nvim-notify
     #;
