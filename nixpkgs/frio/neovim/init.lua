@@ -310,6 +310,53 @@ if vim.g.neovide then
   vim.keymap.set("n", "<D-0>", ":let g:neovide_scale_factor = 1.0<CR>")
 end
 
+-- Claude Code Integration
+-- Auto-update socket file for Claude Code to communicate with this Neovim instance
+local function update_claude_socket()
+  local project_root = vim.fn.finddir('.nvim', vim.fn.expand('%:p:h') .. ';')
+  if project_root ~= '' then
+    project_root = vim.fn.fnamemodify(project_root, ':h')
+    local socket_file = project_root .. '/.nvim/socket'
+    local file = io.open(socket_file, 'w')
+    if file then
+      file:write(vim.v.servername)
+      file:close()
+    end
+  end
+end
+
+vim.api.nvim_create_autocmd({ 'VimEnter', 'BufEnter' }, {
+  callback = update_claude_socket,
+})
+
+-- Auto-load project-specific Neovim config from .nvim directory
+local function load_project_config()
+  local cwd = vim.fn.getcwd()
+  local config_file = cwd .. '/.nvim/nvim-config.lua'
+
+  -- Check if the config file exists
+  if vim.fn.filereadable(config_file) == 1 then
+    -- Only load if we haven't loaded it before (to avoid reloading on every BufEnter)
+    if not vim.g.loaded_project_nvim_config or vim.g.loaded_project_nvim_config ~= config_file then
+      vim.notify('Loading project config: ' .. config_file, vim.log.levels.INFO)
+      dofile(config_file)
+      vim.g.loaded_project_nvim_config = config_file
+    end
+  end
+end
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = load_project_config,
+})
+
+-- Also reload when changing directory
+vim.api.nvim_create_autocmd('DirChanged', {
+  callback = function()
+    vim.g.loaded_project_nvim_config = nil  -- Reset the flag
+    load_project_config()
+  end,
+})
+
 -- Signs for errors
 vim.fn.sign_define("DiagnosticSignError", { text = "◉", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "◉", texthl = "DiagnosticSignWarn" })

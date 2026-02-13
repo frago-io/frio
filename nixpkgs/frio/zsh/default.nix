@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-let 
+let
     ls = import ./ls.nix;
     custom = import ./custom;
     in {
@@ -10,12 +10,16 @@ let
       autosuggestion.enable = true;
       enableCompletion = true;
       zplug = {
-        enable = false; 
+        enable = false;
         plugins = [
-          { name = "nix-community/nix-zsh-completions"; } 
+          { name = "nix-community/nix-zsh-completions"; }
         ];
       };
-      initExtra = ''
+      initContent = lib.mkMerge [
+        (lib.mkBefore ''
+          ${(builtins.readFile ./first-zshrc.sh)}
+        '')
+        ''
           ${(builtins.readFile ./utils.sh)}
           ${(builtins.readFile ./zshrc)}
 
@@ -29,10 +33,8 @@ let
           alias la="ls -lAh --group-directories-first"
           alias lsa="ls -lh --group-directories-first"
           alias l="la"
-        '';
-      initExtraFirst = ''
-          ${(builtins.readFile ./first-zshrc.sh)}
-        '';
+        ''
+      ];
 
         oh-my-zsh = {
         custom="${custom}";

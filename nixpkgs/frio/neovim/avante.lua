@@ -1,6 +1,6 @@
 require("avante_lib").load()
-local disable_avante = os.getenv("DISABLE_AVANTE")
-if disable_avante ~= "1" then
+local enable_avante = os.getenv("ENABLE_AVANTE")
+if enable_avante == "1" then
     require("avante").setup(
     {
         --- ... existing configurations

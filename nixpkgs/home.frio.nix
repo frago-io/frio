@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   common = {
-    inherit config pkgs;
+    inherit config pkgs lib;
   };
   isDarwin = builtins.elem builtins.currentSystem [ "x86_64-darwin" "aarch64-darwin" ];
   neovim = import ./frio/neovim common;
