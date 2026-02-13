@@ -470,17 +470,7 @@ in
     #''
     #;
     #}
-
-    {
-      plugin = fzf-hoogle-vim                 #this one has a bug about
-        # a file not found: cashe.json
-        # NOTE: go to fzf-hoogle-vim definition
-        # in order to swithc back to the original
-        # repo
-      ;
-      config = '' ${(builtins.readFile ./fzf-hoogle.rc.vim)} ''
-      ;
-    }
+    #fzf-hoogle-vim removed - was causing init.lua parse errors
 
     # JAVASCRIPT ****************************************************
     {
@@ -688,5 +678,5 @@ in
   #${(builtins.readFile ./vimrc.vim)}
   #'';
   # Use the lua config instead of vimrc
-  extraLuaConfig = builtins.readFile ./init.lua;
+  initLua = builtins.readFile ./init.lua;
 }
