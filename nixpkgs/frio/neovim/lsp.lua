@@ -1,16 +1,18 @@
 require("mason").setup()
 
-local lspconfig = require("lspconfig")
-
-local function codeLens(client, bufnr)
-    -- Enable code lens refreshing
-    if client.server_capabilities.codeLensProvider then
-        vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "CursorHold" }, {
-            buffer = bufnr,
-            callback = vim.lsp.codelens.refresh,
-        })
+-- CodeLens setup via LspAttach (replaces on_attach)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local bufnr = args.buf
+    if client and client.server_capabilities.codeLensProvider then
+      vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "CursorHold" }, {
+        buffer = bufnr,
+        callback = vim.lsp.codelens.refresh,
+      })
     end
-end
+  end,
+})
 
 -- Global default configuration
 local default_hls_config = {
@@ -20,7 +22,6 @@ local default_hls_config = {
         },
     },
     cmd = { "haskell-language-server-wrapper", "--lsp" },
-    on_attach = codeLens,
 }
 
 -- Function to find and load project-specific config
@@ -39,7 +40,6 @@ local function setup_hls()
   local project_config = get_project_config()
 
   if project_config then
-    -- Merge project config with default config
     for k, v in pairs(project_config) do
       if type(v) == "table" and type(config[k]) == "table" then
         config[k] = vim.tbl_deep_extend("force", config[k], v)
@@ -49,7 +49,7 @@ local function setup_hls()
     end
   end
 
-  require("lspconfig").hls.setup(config)
+  vim.lsp.config("hls", config)
 end
 
 -- Call the setup function
@@ -67,30 +67,29 @@ setup_hls()
 --   },
 -- }
 
+vim.lsp.config("ts_ls", {})   -- TypeScript/JavaScript
+vim.lsp.config("yamlls", {})  -- YAML LSP
+vim.lsp.config("rnix", {})    -- Nix LSP
+-- vim.lsp.config("lean", {}) -- Lean LSP
+vim.lsp.config("aiken", {})   -- Aiken LSP
 
-lspconfig.ts_ls.setup({on_attach = codeLens,})  -- TypeScript/JavaScript
-lspconfig.yamlls.setup({on_attach = codeLens,})  -- YAML LSP
-lspconfig.rnix.setup({on_attach = codeLens,})  -- Nix LSP
--- lspconfig.lean.setup({})  -- Lean LSP
-lspconfig.aiken.setup({on_attach = codeLens,})  -- Aiken LSP
+vim.lsp.enable({ "hls", "ts_ls", "yamlls", "rnix", "aiken" })
 
 -- Global Mappings for LSP
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true })  -- Go to definition
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true })  -- Hover documentation
-vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true })  -- Rename symbol
-vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, { noremap = true, silent = true })  -- Code actions
-vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true })  -- Show references
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })  -- Previous diagnostic
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })  -- Next diagnostic
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, { noremap = true, silent = true })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>ap", vim.diagnostic.goto_prev, { noremap = true, silent = true })  -- Previous diagnostic
-vim.keymap.set("n", "<Leader>an", vim.diagnostic.goto_next, { noremap = true, silent = true })  -- Next diagnostic
-vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { noremap = true, silent = true })
-
+vim.keymap.set("n", "<Leader>ap", vim.diagnostic.goto_prev, { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>an", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
 -- Enable LSP UI Enhancements (Floating Windows)
 vim.diagnostic.config({
-  virtual_text = false,  -- Similar to `diagnostic.virtualText: false`
+  virtual_text = false,
   signs = true,
   underline = true,
   update_in_insert = false,
@@ -106,7 +105,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 local popup_manually_closed = false
 local current_diagnostic_pos = nil
 
-
 vim.keymap.set("n", "gce", vim.lsp.codelens.run, { noremap = true, silent = true, desc = "Run CodeLens" })
 vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "Code Actions" })
-
