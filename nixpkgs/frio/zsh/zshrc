@@ -35,6 +35,7 @@ alias rock="ssh rock@rock"
 alias pi="ssh pi@pi"
 alias apopos="ssh apophis@popos"
 alias bcat='bat --paging=never'
+deepfile() { file "$(readlink -f "$(which "$1")")"; }
 alias status='git status'
 #alias for git commit an passing all arguments to it
 alias commit='git commit $@'
