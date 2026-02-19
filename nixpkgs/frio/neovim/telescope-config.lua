@@ -20,7 +20,8 @@ telescope.setup({
     pickers = {
         find_files = { hidden = true, no_ignore = true, follow = true },
         buffers = { sort_lastused = true, ignore_current_buffer = true },
-        live_grep = { only_sort_text = true },
+        live_grep = { only_sort_text = true, initial_mode = "normal" },
+        grep_string = { initial_mode = "normal" },
         oldfiles = { only_cwd = true },
     },
 })
@@ -68,5 +69,14 @@ vim.api.nvim_create_user_command('Tg', function(opts)
   })
 end, {
   nargs = '*',  -- Accept zero or more arguments
+})
+
+-- :Ag replacement using Telescope (replaces old fzf-vim :Ag command)
+vim.api.nvim_create_user_command('Ag', function(opts)
+  require('telescope.builtin').live_grep({
+    default_text = opts.args,
+  })
+end, {
+  nargs = '*',
 })
 
