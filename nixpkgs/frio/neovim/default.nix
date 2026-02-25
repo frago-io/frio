@@ -210,6 +210,17 @@ let
     };
   };
 
+  ninety-nine = pkgs.vimUtils.buildVimPlugin {
+    name = "99";
+    pname = "99";
+    src = pkgs.fetchFromGitHub {
+      owner = "ThePrimeagen";
+      repo = "99";
+      rev = "6a64e0b2f4c7f1e3911db1f8318e5d7c68cb8dff";
+      sha256 = "sha256-OOj2bnhxn3Ou7VQOmi3RVPcVs+CqolnJzEgfkXk2p5Q=";
+    };
+  };
+
   ##NOTE: This is not th original repo, switch back to `monkoose` after
   ## https://github.com/monkoose/fzf-hoogle.vim/issues/9 is closed
   #fzf-hoogle-vim = pkgs.vimUtils.buildVimPlugin {
@@ -661,6 +672,13 @@ in
     #  type = "lua";
     #  config = builtins.readFile ./claude-code-nvim.lua;
     #}
+
+    # 99 - ThePrimeagen's Neovim AI agent
+    {
+      plugin = ninety-nine;
+      type = "lua";
+      config = builtins.readFile ./99.lua;
+    }
     #{
     #plugin = nvim-notify
     #;
