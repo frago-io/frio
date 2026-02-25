@@ -36,6 +36,33 @@ alias pi="ssh pi@pi"
 alias apopos="ssh apophis@popos"
 alias bcat='bat --paging=never'
 deepfile() { file "$(readlink -f "$(which "$1")")"; }
+
+# Fast parallel compression / decompression using pigz + pv
+fastzip() {
+    if [ $# -eq 0 ]; then
+        echoError "Usage: fastzip <file_or_folder>"
+        return 1
+    fi
+    local target="${1%/}"
+    if [ ! -e "$target" ]; then
+        echoError "'$target' does not exist"
+        return 1
+    fi
+    local SIZE=$(du -sk "$target" | cut -f1)
+    tar cf - "$target" | pv -s ${SIZE}k | pigz -1 -p $(sysctl -n hw.ncpu) > "${target}.tar.gz"
+}
+
+fastunzip() {
+    if [ $# -eq 0 ]; then
+        echoError "Usage: fastunzip <file.tar.gz>"
+        return 1
+    fi
+    if [ ! -f "$1" ]; then
+        echoError "'$1' is not a file"
+        return 1
+    fi
+    pv "$1" | pigz -d -p $(sysctl -n hw.ncpu) | tar xf -
+}
 alias status='git status'
 #alias for git commit an passing all arguments to it
 alias commit='git commit $@'

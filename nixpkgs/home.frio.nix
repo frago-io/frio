@@ -49,6 +49,10 @@ in
     #hlsp
     #my-python
 
+    # COMPRESSION  **************************************************
+    pkgs.pv
+    pkgs.pigz
+
     # UNIX UTILS  ***************************************************
     pkgs.git
     pkgs.git-lfs
