@@ -160,3 +160,4 @@ When modifying files:
 - Nix files are strictly typed; small syntax errors cause full build failures
 - Platform-specific code: use `isDarwin = builtins.elem builtins.currentSystem [ "x86_64-darwin" "aarch64-darwin" ]`
 - When adding external packages: pin versions in `flake.lock` for reproducibility
+- **Keymap changes**: Whenever a keymap is added, removed, or modified in any Neovim config file (init.lua, default.nix plugin configs, 99.lua, telescope-config.lua, lsp.lua, etc.), you MUST also update the static keymap reference in `nixpkgs/frio/neovim/maps.lua` (used by the `:StaticMaps` command) to keep it in sync. The dynamic `:Maps` command auto-discovers keymaps at runtime, but `:StaticMaps` is a hand-curated reference that needs manual updates.

@@ -696,5 +696,5 @@ in
   #${(builtins.readFile ./vimrc.vim)}
   #'';
   # Use the lua config instead of vimrc
-  initLua = builtins.readFile ./init.lua;
+  initLua = builtins.readFile ./init.lua + "\n" + builtins.readFile ./maps.lua + "\n" + builtins.readFile ./dynamic-maps.lua;
 }
