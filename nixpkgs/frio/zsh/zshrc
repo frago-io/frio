@@ -50,6 +50,13 @@ fastzip() {
     fi
     local SIZE=$(du -sk "$target" | cut -f1)
     tar cf - "$target" | pv -s ${SIZE}k | pigz -1 -p $(sysctl -n hw.ncpu) > "${target}.tar.gz"
+    if [ $? -eq 0 ] && [ -f "${target}.tar.gz" ]; then
+        local OUT_SIZE=$(du -sh "${target}.tar.gz" | cut -f1)
+        echoOK "Created ${target}.tar.gz (${OUT_SIZE})"
+    else
+        echoError "Failed to compress '$target'"
+        return 1
+    fi
 }
 
 fastunzip() {
@@ -62,6 +69,18 @@ fastunzip() {
         return 1
     fi
     pv "$1" | pigz -d -p $(sysctl -n hw.ncpu) | tar xf -
+    if [ $? -eq 0 ]; then
+        local EXTRACTED=$(tar tf "$1" 2>/dev/null | head -1 | cut -d'/' -f1)
+        if [ -n "$EXTRACTED" ] && [ -e "$EXTRACTED" ]; then
+            local OUT_SIZE=$(du -sh "$EXTRACTED" | cut -f1)
+            echoOK "Extracted '$EXTRACTED' (${OUT_SIZE})"
+        else
+            echoOK "Extracted from '$1'"
+        fi
+    else
+        echoError "Failed to decompress '$1'"
+        return 1
+    fi
 }
 alias status='git status'
 #alias for git commit an passing all arguments to it
