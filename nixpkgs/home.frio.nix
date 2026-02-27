@@ -10,6 +10,7 @@ let
   userInfo = import ./frio/_user.info.nix;
   hlsp = import ./frio/haskell/lsp/default.nix;
   smctemp = import ./frio/smctemp/default.nix;
+  ranger = import ./frio/ranger common;
   comma = (import (pkgs.fetchFromGitHub {
     owner = "nix-community";
     repo = "comma";
@@ -63,7 +64,6 @@ in
     pkgs.silver-searcher
     pkgs.gnupg
     pkgs.pinentry-curses
-    pkgs.ranger
     pkgs.mc
     pkgs.wget
     pkgs.curl
@@ -106,7 +106,8 @@ in
     pkgs.fortune
     pkgs.cowsay
     pkgs.lolcat
-    pkgs.ranger
+
+  ] ++ ranger.packages ++ [
 
     # NIX  **********************************************************
     # temporary disabled
@@ -127,6 +128,8 @@ in
     pkgs.stylish-haskell
 
   ];
+
+  home.file = ranger.files;
 
   programs.bat = {
     enable = true;

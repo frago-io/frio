@@ -50,7 +50,7 @@ fastzip() {
     fi
     local SIZE=$(du -sk "$target" | cut -f1)
     tar cf - "$target" | pv -s ${SIZE}k | pigz -1 -p $(sysctl -n hw.ncpu) > "${target}.tar.gz"
-    if [ $? -eq 0 ] && [ -f "${target}.tar.gz" ]; then
+    if [ ${pipestatus[-1]} -eq 0 ] && [ -f "${target}.tar.gz" ]; then
         local OUT_SIZE=$(du -sh "${target}.tar.gz" | cut -f1)
         echoOK "Created ${target}.tar.gz (${OUT_SIZE})"
     else
@@ -68,9 +68,11 @@ fastunzip() {
         echoError "'$1' is not a file"
         return 1
     fi
+    # Capture the top-level entry name cheaply: decompress only the first 512KB to read the first tar header
+    local EXTRACTED=$(head -c 524288 "$1" | pigz -d 2>/dev/null | tar tf - 2>/dev/null | head -1 | cut -d'/' -f1)
     pv "$1" | pigz -d -p $(sysctl -n hw.ncpu) | tar xf -
-    if [ $? -eq 0 ]; then
-        local EXTRACTED=$(tar tf "$1" 2>/dev/null | head -1 | cut -d'/' -f1)
+    local RET=${pipestatus[-1]}  # zsh pipestatus - exit code of last cmd in pipeline (tar)
+    if [ $RET -eq 0 ]; then
         if [ -n "$EXTRACTED" ] && [ -e "$EXTRACTED" ]; then
             local OUT_SIZE=$(du -sh "$EXTRACTED" | cut -f1)
             echoOK "Extracted '$EXTRACTED' (${OUT_SIZE})"
