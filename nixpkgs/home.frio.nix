@@ -11,6 +11,7 @@ let
   hlsp = import ./frio/haskell/lsp/default.nix;
   smctemp = import ./frio/smctemp/default.nix;
   ranger = import ./frio/ranger common;
+  yazi = import ./frio/yazi common;
   comma = (import (pkgs.fetchFromGitHub {
     owner = "nix-community";
     repo = "comma";
@@ -107,7 +108,7 @@ in
     pkgs.cowsay
     pkgs.lolcat
 
-  ] ++ ranger.packages ++ [
+  ] ++ ranger.packages ++ yazi.packages ++ [
 
     # NIX  **********************************************************
     # temporary disabled
