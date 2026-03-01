@@ -8,7 +8,6 @@ let
   zsh = import ./frio/zsh common;
   tmux = import ./frio/tmux common;
   userInfo = import ./frio/_user.info.nix;
-  hlsp = import ./frio/haskell/lsp/default.nix;
   smctemp = import ./frio/smctemp/default.nix;
   ranger = import ./frio/ranger common;
   yazi = import ./frio/yazi common;
@@ -45,11 +44,7 @@ in
     #
     pkgs.ripgrep
     pkgs.rustup
-    #pkgs.lean4
     pkgs.qemu
-    #NOTE: we disabled hlsp, please install haskell-language-server-1.7.0.0 from ghcup
-    #hlsp
-    #my-python
 
     # COMPRESSION  **************************************************
     pkgs.pv
@@ -70,6 +65,7 @@ in
     pkgs.curl
     pkgs.browsh
     pkgs.neofetch
+    pkgs.lazydocker
 
     # GIT **********************************************************
     pkgs.lazygit
