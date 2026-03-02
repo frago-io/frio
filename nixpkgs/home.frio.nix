@@ -126,7 +126,7 @@ in
 
   ];
 
-  home.file = ranger.files;
+  home.file = ranger.files // yazi.files;
 
   programs.bat = {
     enable = true;

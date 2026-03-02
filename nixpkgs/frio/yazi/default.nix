@@ -15,5 +15,17 @@ in
   packages = [
     yaziFlake.packages.${system}.default
     pkgs.chafa
+    pkgs.glow
   ];
+
+  files = {
+    ".config/yazi/yazi.toml" = {
+      source = ./yazi.toml;
+      force = true;
+    };
+    ".config/yazi/plugins/glow.yazi/main.lua" = {
+      source = ./plugins/glow.yazi/main.lua;
+      force = true;
+    };
+  };
 }

@@ -299,12 +299,12 @@ vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
 vim.api.nvim_set_keymap('i', '<C-Space>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, script = true })
 
+-- Disable horizontal mouse scrolling globally
+vim.cmd("set mousescroll=ver:3,hor:0")
+
 -- Neovide settings
 vim.opt.guifont = "MesloLGS\\ Nerd\\ Font:h14.5"
 if vim.g.neovide then
-  -- Using vim.opt.mousescroll directly with a string causes issues
-  -- Setting mousescroll options individually
-  vim.cmd("set mousescroll=ver:3,hor:0")
   vim.keymap.set("n", "<D-=>", ":let g:neovide_scale_factor += 0.1<CR>")
   vim.keymap.set("n", "<D-->", ":let g:neovide_scale_factor -= 0.1<CR>")
   vim.keymap.set("n", "<D-0>", ":let g:neovide_scale_factor = 1.0<CR>")
